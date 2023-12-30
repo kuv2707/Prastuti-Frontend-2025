@@ -25,14 +25,11 @@ const Requestsent = (prop) => {
   const sendRequest = async (id) => {
     try {
       showLoaderWithMessage("Sending Request");
-      const response = await axios.post(
-        `${process.env.REACT_APP_SECRET_KEY}/api/request/`,
-        {
-          recepient_email: email,
-          team_id: id,
-          user_id: localStorage.getItem("loginData"),
-        }
-      );
+      const response = await axios.post(`http://localhost:3000/api/request/`, {
+        recepient_email: email,
+        team_id: id,
+        user_id: localStorage.getItem("loginData"),
+      });
       hideLoader();
       toast.success(response.data.message, {
         position: "top-right",
@@ -72,7 +69,7 @@ const Requestsent = (prop) => {
           autoComplete="off"
           // placeholder="Recipient email"
           style={{ fontSize: "1rem" }}
-          value={email} 
+          value={email}
           onChange={(e) => {
             setemail(e.target.value);
           }}
@@ -125,14 +122,11 @@ const Profileteam = (prop) => {
     try {
       if (value) {
         showLoaderWithMessage("Creating Team");
-        const response = await axios.post(
-          `${process.env.REACT_APP_SECRET_KEY}/api/teams`,
-          {
-            userID: localStorage.getItem("loginData"),
-            Team_Name: value,
-            Member_Count: 1,
-          }
-        );
+        const response = await axios.post(`http://localhost:3000/api/teams`, {
+          userID: localStorage.getItem("loginData"),
+          Team_Name: value,
+          Member_Count: 1,
+        });
         hideLoader();
         toast.success(response.data.message, {
           position: "top-right",
@@ -196,8 +190,7 @@ const Profileteam = (prop) => {
                 <div
                   className="psubchild1team"
                   style={{
-                    backgroundImage:
-                    `url("/profile/team.jpg")`,
+                    backgroundImage: `url("/profile/team.jpg")`,
                   }}
                 ></div>
                 <div className="psubchildteam">
@@ -218,7 +211,7 @@ const Profileteam = (prop) => {
                     })}
                     {/* {console.log("test")}
                     {console.log(data.Events_Participated.length)} */}
-                    {data.Members.length >= 3? null : (
+                    {data.Members.length >= 3 ? null : (
                       <Requestsent id={data._id} />
                     )}
                   </div>

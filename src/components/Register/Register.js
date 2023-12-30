@@ -7,7 +7,7 @@ import axios from "axios";
 // import React from "react";
 import image from "./logo.png";
 import "./Register.css";
-import Loader from "../Loader/loader"
+import Loader from "../Loader/loader";
 
 const Register = () => {
   const [profile, setProfile] = useState([]);
@@ -27,8 +27,7 @@ const Register = () => {
   const hideLoader = () => {
     setShowLoader(false);
   };
-
-  const clientId = process.env.REACT_APP__CLIENT_ID;
+  const clientId = "YOUR GOOGLE FIREBASE CLIENT ID";
   useEffect(() => {
     const initClient = () => {
       gapi.client.init({
@@ -44,10 +43,9 @@ const Register = () => {
   const onSuccess = async (res) => {
     showLoaderWithMessage("Signing In");
     setProfile(res.profileObj);
-    const data = await axios.post(
-      `${process.env.REACT_APP_SECRET_KEY}/api/login`,
-      { tokenId: res.tokenId }
-    );
+    const data = await axios.post(`http://localhost:3000/api/login`, {
+      tokenId: res.tokenId,
+    });
     localStorage.setItem("loginData", data.data.user._id);
     hideLoader();
     if (data.data.user.isFormFilled) {

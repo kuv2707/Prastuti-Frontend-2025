@@ -24,7 +24,7 @@ const RequestCard = (prop) => {
 
   const gettingteam = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SECRET_KEY}/api/teams/${prop.data.team}`
+      `http://localhost:3000/api/teams/${prop.data.team}`
     );
     setvalue(data.team.Team_Name);
   };
@@ -35,7 +35,7 @@ const RequestCard = (prop) => {
     showLoaderWithMessage("Accepting Request");
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_SECRET_KEY}/api/request/accept`,
+        `http://localhost:3000/api/request/accept`,
         {
           requestId: prop.data._id,
         }
@@ -73,7 +73,7 @@ const RequestCard = (prop) => {
     try {
       showLoaderWithMessage("Declining Request");
       const response = await axios.delete(
-        `${process.env.REACT_APP_SECRET_KEY}/api/request/`,
+        `http://localhost:3000/api/request/`,
         {
           data: { requestId: prop.data._id },
         }
