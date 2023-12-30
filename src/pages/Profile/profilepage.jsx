@@ -7,7 +7,6 @@ import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import Loader from "../../components/Loader/loader";
 
-
 const Profilepage = () => {
   const [addclass, setaddclass] = useState(["onclicknav", "", ""]);
   const [team, setteam] = useState(null);
@@ -19,7 +18,6 @@ const Profilepage = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [loaderText, setLoaderText] = useState("");
   const [eventData, setEventData] = useState(null);
-
 
   const showLoaderWithMessage = (message) => {
     setLoaderText(message);
@@ -49,22 +47,17 @@ const Profilepage = () => {
       const gettingData = async () => {
         showLoaderWithMessage("Fetching Details");
         const { data } = await axios.get(
-          `${process.env.REACT_APP_SECRET_KEY}/api/user/${localStorage.getItem(
-            "loginData"
-          )}`
+          `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
         );
 
-        const datas = await axios.get(
-          `${process.env.REACT_APP_SECRET_KEY}/api/events`
-        );
-          
+        const datas = await axios.get(`http://localhost:3000/api/events`);
 
         let links = {};
 
         datas.data.events.map((data, index) => {
           links[data.Name] = data.whatsappLink;
-        })
-        
+        });
+
         setEventData(links);
 
         setinput(data[0]);
@@ -75,7 +68,7 @@ const Profilepage = () => {
           <Profileevent
             event={data[0].Events_Participated}
             team={data[0].Teams}
-            waLink = {links}
+            waLink={links}
           />
         );
         setrequest(data[0].Pending_Requests);
@@ -127,7 +120,6 @@ const Profilepage = () => {
               </div>
             </div>
           </div> */}
-
         </div>
         <div></div>
         <div className="pb-2 m-2 flex flex-col lg:items-center lg:flex-row lg:px-10">
@@ -174,15 +166,11 @@ const Profilepage = () => {
             <h2 className="mt-2 text-2xl text-center font-Manrope font-semibold text-gray-800 md:mt-0 md:text-3xl">
               About
             </h2>
-            <p className=" mt-2 font-Nunito text-gray-600 ">
-              {input.email_id}
-            </p>
+            <p className=" mt-2 font-Nunito text-gray-600 ">{input.email_id}</p>
             <p className=" profile-contact mt-2 font-Nunito text-gray-600">
               +91{input.Phone}
             </p>
-            <p className=" mt-2 font-Nunito  text-gray-600">
-              {input.College}
-            </p>
+            <p className=" mt-2 font-Nunito  text-gray-600">{input.College}</p>
 
             <div className="flex justify-end mt-4">
               <div className="sign-out-btn  flex justify-center">
@@ -204,7 +192,13 @@ const Profilepage = () => {
               <div
                 className={`Pnavchild px-4 ${addclass[0]}`}
                 onClick={() => {
-                  setvalue(<Profileevent event={event} team={team} waLink={eventData}/>);
+                  setvalue(
+                    <Profileevent
+                      event={event}
+                      team={team}
+                      waLink={eventData}
+                    />
+                  );
                   handleevent(0);
                 }}
               >

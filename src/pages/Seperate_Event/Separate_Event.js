@@ -14,8 +14,8 @@ const Separate_Event = ({ data }) => {
   const [teamName, setTeamName] = useState(null);
   const [showLoader, setShowLoader] = useState(false);
   const [loaderText, setLoaderText] = useState("");
-  const [modal, setModal] = useState(false)
-  const handleModal = (value) => setModal(value)
+  const [modal, setModal] = useState(false);
+  const handleModal = (value) => setModal(value);
 
   const showLoaderWithMessage = (message) => {
     setLoaderText(message);
@@ -28,9 +28,7 @@ const Separate_Event = ({ data }) => {
 
   const getEvent = async () => {
     showLoaderWithMessage("Fetching Details");
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_SECRET_KEY}/api/events`
-    );
+    const { data } = await axios.get(`http://localhost:3000/api/events`);
     seteventEame(
       data.events.find(({ Name }) => Name === Eventitle).no_of_participants
     );
@@ -44,16 +42,14 @@ const Separate_Event = ({ data }) => {
 
   const findingteam = async (name) => {
     showLoaderWithMessage("Registering");
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_SECRET_KEY}/api/teams`
-    );
+    const { data } = await axios.get(`http://localhost:3000/api/teams`);
 
     const verifiedname = data.teams.find(({ Team_Name }) => Team_Name === name);
 
     if (verifiedname) {
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_SECRET_KEY}/api/teamRegistration`,
+          `http://localhost:3000/api/teamRegistration`,
           {
             user_id: localStorage.getItem("loginData"),
             event_id: result._id,
@@ -106,9 +102,7 @@ const Separate_Event = ({ data }) => {
   //  console.log(result._id);
   const register = async () => {
     const { data } = await axios.get(
-      `${process.env.REACT_APP_SECRET_KEY}/api/user/${localStorage.getItem(
-        "loginData"
-      )}`
+      `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
     );
     if (!data[0].isFormFilled) {
       window.location.replace("/form");
@@ -118,7 +112,7 @@ const Separate_Event = ({ data }) => {
       try {
         showLoaderWithMessage("Registering");
         const response = await axios.post(
-          `${process.env.REACT_APP_SECRET_KEY}/api/soloRegistration`,
+          `http://localhost:3000/api/soloRegistration`,
           {
             user_id: localStorage.getItem("loginData"),
             event_id: result._id,
@@ -155,7 +149,7 @@ const Separate_Event = ({ data }) => {
       }
     }
     if (result.team_event) {
-      handleModal(true)
+      handleModal(true);
       // let teamName = prompt(
       //   "Please enter your team name that you have created in profilepage",
       //   "team name"
@@ -196,7 +190,7 @@ const Separate_Event = ({ data }) => {
           <h3 className="md:text-md xl:text-lg text-justify font-[Nunito] text-md">
             Participants : <span>{eventName}</span>
           </h3>
-          
+
           {/* {result.team_event && <div className="font-[Nunito] mt-[1em] font-bold"> Team Event</div> }
           {!result.team_event && <div className="font-[Nunito] mt-[1em] font-bold">  Solo Event</div> } */}
           {localStorage.getItem("loginData") ? (
@@ -218,19 +212,41 @@ const Separate_Event = ({ data }) => {
               </button>
             </Link>
           )}
-          <div className="conduct"> <a href="https://github.com/Prastuti-Fest-IIT-BHU/Prastuti-Frontend-2023/blob/main/public/code_of_conduct.md" target="_blank" rel="noreferrer">Code of Conduct</a></div>
+          <div className="conduct">
+            {" "}
+            <a
+              href="https://github.com/Prastuti-Fest-IIT-BHU/Prastuti-Frontend-2023/blob/main/public/code_of_conduct.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Code of Conduct
+            </a>
+          </div>
         </div>
-        
       </div>
-      <Modal modal={modal}
-        handleModal={handleModal}>
+      <Modal modal={modal} handleModal={handleModal}>
         <div className="flex flex-col rounded-md">
-          <label for="user-team" className="p-2">Please enter your team name that you have created in profilepage</label>
-          <input onChange={(e) => setTeamName(e.target.value)} id="user-team" type="text" className="p-2" placeholder="TeamName"></input>
-          <button className="p-2 flex  justify-end" onClick={() => { handleModal(false); findingteam(teamName) }}>Submit</button>
+          <label for="user-team" className="p-2">
+            Please enter your team name that you have created in profilepage
+          </label>
+          <input
+            onChange={(e) => setTeamName(e.target.value)}
+            id="user-team"
+            type="text"
+            className="p-2"
+            placeholder="TeamName"
+          ></input>
+          <button
+            className="p-2 flex  justify-end"
+            onClick={() => {
+              handleModal(false);
+              findingteam(teamName);
+            }}
+          >
+            Submit
+          </button>
         </div>
       </Modal>
-      
     </>
   );
 };

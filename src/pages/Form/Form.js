@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Form1 = () => {
   // const [selected, setSelected] = useState();
@@ -10,11 +10,9 @@ const Form1 = () => {
     Name: "",
     Phone: 0,
     Gender: "",
-    College: ""
-  })
-  const [social, setsocial] = useState([
-    "", "", ""
-  ])
+    College: "",
+  });
+  const [social, setsocial] = useState(["", "", ""]);
   const [toasts, setToast] = useState(true);
 
   // const checkFormFilled = async () => {
@@ -25,25 +23,27 @@ const Form1 = () => {
   //   return false;
   // }
 
-  useEffect(()=>{
-    const checkFormFilled = async ()=>{
-      const {data} = await axios.get(`${process.env.REACT_APP_SECRET_KEY}/api/user/${localStorage.getItem("loginData")}`);
-      if(data[0].isFormFilled){
+  useEffect(() => {
+    const checkFormFilled = async () => {
+      const { data } = await axios.get(
+        `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
+      );
+      if (data[0].isFormFilled) {
         window.location.replace("/");
       }
-    }
-    checkFormFilled()
-  },[]) 
+    };
+    checkFormFilled();
+  }, []);
 
   const inserData = (e) => {
     setToast(false);
     setvalue((prevalue) => {
       return {
         ...prevalue,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
   const [selectionArray, setSelectionArray] = useState([
     false,
@@ -86,42 +86,42 @@ const Form1 = () => {
 
   const UpdateData = async () => {
     try {
-      const data = await axios.put(`${process.env.REACT_APP_SECRET_KEY}/api/user/${localStorage.getItem("loginData")}`, {
-        Name: value.Name,
-        College: value.College,
-        Phone: value.Phone,
-        Gender: value.Gender,
-        SocialMedia_Links: social,
-        Interests: interestArray,
-        isFormFilled: true
-      });
+      const data = await axios.put(
+        `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`,
+        {
+          Name: value.Name,
+          College: value.College,
+          Phone: value.Phone,
+          Gender: value.Gender,
+          SocialMedia_Links: social,
+          Interests: interestArray,
+          isFormFilled: true,
+        }
+      );
       setTimeout(() => {
-        window.location.replace("/thankyou")
-      }, 1500)
+        window.location.replace("/thankyou");
+      }, 1500);
     } catch (error) {
       console.log(error);
-      alert(error.message)
+      alert(error.message);
     }
-  }
+  };
   function Submit(e) {
     e.preventDefault();
-    UpdateData()
-
+    UpdateData();
   }
 
-  if (!localStorage.getItem('loginData')) {
+  if (!localStorage.getItem("loginData")) {
     window.location.replace("/");
     return;
   }
-  
 
   // if (checkFormFilled()){
   //   window.location.replace("/");
   //   return;
   // }
 
-
-  toast.info('Please fill the form to continue!', {
+  toast.info("Please fill the form to continue!", {
     toastId: "form",
     position: "top-right",
     autoClose: 5000,
@@ -133,11 +133,10 @@ const Form1 = () => {
     theme: "colored",
   });
 
-
   return (
     <div>
-      {
-        toasts ? <ToastContainer
+      {toasts ? (
+        <ToastContainer
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}
@@ -149,8 +148,8 @@ const Form1 = () => {
           pauseOnHover
           theme="colored"
           limit={1}
-        /> : null
-      }
+        />
+      ) : null}
       <section className="bg-cover -z-10 h-max md:h-full" style={divStyle}>
         <div className="flex flex-col min-h-[91.4vh] bg-black/60">
           <div className="container  flex flex-col flex-1 px-0 md:px-6 py-0 mx-auto">
@@ -161,7 +160,10 @@ const Form1 = () => {
                 </h1>
 
                 <p className="max-w-xl font-Manrope mt-6">
-                  Electrical Department of IIT (BHU) Varanasi presents PRASTUTI, the annual technical festival that echoes the spirit of innovation and progress! Just one more step to go for you to be a part! Are you Ready?
+                  Electrical Department of IIT (BHU) Varanasi presents PRASTUTI,
+                  the annual technical festival that echoes the spirit of
+                  innovation and progress! Just one more step to go for you to
+                  be a part! Are you Ready?
                 </p>
 
                 {/* <button className="px-8 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
@@ -174,7 +176,9 @@ const Form1 = () => {
                   <div className="flex mt-4 -mx-1.5 ">
                     <a
                       className="mx-1.5 text-white transition-colors duration-300 transform hover:text-[#00acee]"
-                      href="https://twitter.com/fest_prastuti?t=KdlkevmuvhbFQHx63dibXA&s=08" target="_blank" rel="noreferrer"
+                      href="https://twitter.com/fest_prastuti?t=KdlkevmuvhbFQHx63dibXA&s=08"
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <svg
                         className="w-10 h-10 fill-current"
@@ -189,7 +193,9 @@ const Form1 = () => {
 
                     <a
                       className="mx-1.5 text-white transition-colors duration-300 transform hover:text-[#0077b5]"
-                      href="https://www.linkedin.com/company/prastuti/" target="_blank" rel="noreferrer"
+                      href="https://www.linkedin.com/company/prastuti/"
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <svg
                         className="w-8 h-8"
@@ -215,7 +221,9 @@ const Form1 = () => {
 
                     <a
                       className="mx-1.5 text-white transition-colors duration-300 transform hover:text-[#3b5998]"
-                      href="https://www.facebook.com/prastuti.iitbhu" target="_blank" rel="noreferrer"
+                      href="https://www.facebook.com/prastuti.iitbhu"
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <svg
                         className="w-8 h-8"
@@ -233,7 +241,9 @@ const Form1 = () => {
 
                     <a
                       className="mx-1.5 text-white transition-colors duration-300 transform hover:text-[#833AB4]"
-                      href="https://www.instagram.com/prastuti.iitbhu/" target="_blank" rel="noreferrer"
+                      href="https://www.instagram.com/prastuti.iitbhu/"
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <svg
                         className="w-8 h-8"
@@ -259,7 +269,8 @@ const Form1 = () => {
                   </h1>
 
                   <p className="mt-4 font-Catamaran text-gray-500 ">
-                    We would love to learn more about You! This form can only be filled once and is Mandatory so be careful!
+                    We would love to learn more about You! This form can only be
+                    filled once and is Mandatory so be careful!
                   </p>
 
                   <form className="mt-6" onSubmit={Submit}>
@@ -305,7 +316,6 @@ const Form1 = () => {
                             className="flex-grow text-gray-700 font-Catamaran"
                             type="radio"
                             name="Gender"
-
                             onChange={inserData}
                             value="Male"
                             required
@@ -371,8 +381,8 @@ const Form1 = () => {
                           name="SocialMedia_Links"
                           onChange={(e) => {
                             const data = [...social];
-                            data[0] = e.target.value
-                            setsocial(data)
+                            data[0] = e.target.value;
+                            setsocial(data);
                           }}
                           placeholder="https://www.instagram.com/instagram/"
                           className="block font-Catamaran w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
@@ -387,8 +397,8 @@ const Form1 = () => {
                           name="SocialMedia_Links"
                           onChange={(e) => {
                             const data = [...social];
-                            data[1] = e.target.value
-                            setsocial(data)
+                            data[1] = e.target.value;
+                            setsocial(data);
                           }}
                           placeholder="https://www.linkedin.com/company/prastuti/"
                           className="block font-Catamaran w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
@@ -403,8 +413,8 @@ const Form1 = () => {
                           name="SocialMedia_Links"
                           onChange={(e) => {
                             const data = [...social];
-                            data[2] = e.target.value
-                            setsocial(data)
+                            data[2] = e.target.value;
+                            setsocial(data);
                           }}
                           placeholder="https://github.com/Prastuti-Fest-IIT-BHU"
                           className="block font-Catamaran w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
@@ -441,16 +451,18 @@ const Form1 = () => {
                                     // console.log(selected);
                                     // console.log(interestArray);
                                   }}
-                                  className={`mr-6 m-1 border-2 flex ${selectionArray[index]
-                                    ? "border-[#004C7D]"
-                                    : ""
-                                    } justify-center pl-2 pr-2 items-center align-middle text-sm font-medium text-gray-900 p-1 font-Catamaran bg-[#DBF2FF] dark rounded-xl `}
+                                  className={`mr-6 m-1 border-2 flex ${
+                                    selectionArray[index]
+                                      ? "border-[#004C7D]"
+                                      : ""
+                                  } justify-center pl-2 pr-2 items-center align-middle text-sm font-medium text-gray-900 p-1 font-Catamaran bg-[#DBF2FF] dark rounded-xl `}
                                 >
                                   {interest}
                                   <div>
                                     <span
-                                      className={`${selectionArray[index] ? "" : "hidden"
-                                        } material-symbols-outlined flex items-center ml-1 text-sm cursor-pointer hover:bg-gray-100`}
+                                      className={`${
+                                        selectionArray[index] ? "" : "hidden"
+                                      } material-symbols-outlined flex items-center ml-1 text-sm cursor-pointer hover:bg-gray-100`}
                                     >
                                       X
                                     </span>
@@ -477,6 +489,6 @@ const Form1 = () => {
       </section>
     </div>
   );
-}
+};
 
 export default Form1;
