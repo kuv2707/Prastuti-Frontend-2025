@@ -29,10 +29,10 @@ const Separate_Event = ({ data }) => {
   const getEvent = async () => {
     showLoaderWithMessage("Fetching Details");
     const { data } = await axios.get(`http://localhost:3000/api/events`);
-    seteventEame(
-      data.events.find(({ Name }) => Name === Eventitle).no_of_participants
-    );
-    setresult(data.events.find(({ Name }) => Name === Eventitle));
+    // seteventEame(
+    //   data.events.find(({ Name }) => Name === Eventitle).no_of_participants
+    // );
+    // setresult(data.events.find(({ Name }) => Name === Eventitle));
     hideLoader();
   };
 
