@@ -55,8 +55,9 @@ const Profilepage = () => {
         let links = {};
 
         datas.data.events.map((data, index) => {
-          links[data.Name] = data.whatsappLink;
+          links[data.Name] = data.Description;
         });
+        console.log(links);
 
         setEventData(links);
 
