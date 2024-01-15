@@ -105,17 +105,17 @@ export const Data = [
     team: true
 
   },
-  {
-    title: 'Paper Presentation',
-    //info: 'easgffkghkufdtrdt strsdyftrstdhj',
-    information:
-      `Prastuti started as an All India Paper Presentation Event. Continuing its legacy we presents its workshop on Paper and Poster Presentation.Paper and poster presentation are the few skills which every engineer must have irrespective of the future field they are into. It is very important to inculcate such skills at a very young age as they take time to master. The workshop would give an introduction about different sections of paper and poster. `,
-    infoinfo: '',
-    image: img7,
-    slide: 'fade-up',
-    path: '/paper-presentation',
-    team: false
+  // {
+  //   title: 'Paper Presentation',
+  //   //info: 'easgffkghkufdtrdt strsdyftrstdhj',
+  //   information:
+  //     `Prastuti started as an All India Paper Presentation Event. Continuing its legacy we presents its workshop on Paper and Poster Presentation.Paper and poster presentation are the few skills which every engineer must have irrespective of the future field they are into. It is very important to inculcate such skills at a very young age as they take time to master. The workshop would give an introduction about different sections of paper and poster. `,
+  //   infoinfo: '',
+  //   image: img7,
+  //   slide: 'fade-up',
+  //   path: '/paper-presentation',
+  //   team: false
 
-  },
+  // },
 
 ];

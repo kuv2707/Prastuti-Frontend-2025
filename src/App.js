@@ -77,7 +77,7 @@ export default function App() {
             </>
           }
         ></Route>
-        <Route
+        {/* <Route
           path="/paper-presentation"
           element={
             <>
@@ -85,7 +85,7 @@ export default function App() {
               <SeparateEvent data={eventData.paperpresetation} />
             </>
           }
-        ></Route>
+        ></Route> */}
         <Route path="/thankyou" element={<Thankyou />}></Route>
         <Route
           path="/oscillion"

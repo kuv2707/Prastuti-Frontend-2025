@@ -46,7 +46,7 @@ const Profilepage = () => {
     if (localStorage.getItem("loginData")) {
       const gettingData = async () => {
         showLoaderWithMessage("Fetching Details");
-        // console.log(localStorage.getItem("loginData"));
+        console.log(localStorage.getItem("loginData"));
         const { data } = await axios.get(
           `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
         );
