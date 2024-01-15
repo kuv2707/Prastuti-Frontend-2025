@@ -46,18 +46,21 @@ const Profilepage = () => {
     if (localStorage.getItem("loginData")) {
       const gettingData = async () => {
         showLoaderWithMessage("Fetching Details");
+        // console.log(localStorage.getItem("loginData"));
         const { data } = await axios.get(
           `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
         );
+        console.log(data);
 
         const datas = await axios.get(`http://localhost:3000/api/events`);
-
+        // console.log(datas.data);
         let links = {};
 
         datas.data.events.map((data, index) => {
-          links[data.Name] = data.Description;
+          // console.log(data);
+          links[data.Name] = data.whatsappLink;
         });
-        console.log(links);
+        // console.log(links);
 
         setEventData(links);
 
@@ -103,8 +106,8 @@ const Profilepage = () => {
           >
             <div className="min-w-full md:rounded-b-xl h-[160px] -mb-4 bg-black/60"></div>
           </div>
-          {/* <img src={profileback} className=" relative -mb-36 object-cover opacity-90" /> */}
-          {/* <div className="myprofile -mt-12 flex flex-col md:flex-row">
+
+          <div className="myprofile -mt-12 flex flex-col md:flex-row">
             <div className="profilechild imgprofile">
               <img
                 className="imgprofile"
@@ -120,11 +123,11 @@ const Profilepage = () => {
                 {input.email_id}
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
         <div></div>
         <div className="pb-2 m-2 flex flex-col lg:items-center lg:flex-row lg:px-10">
-          {/* <div className="about-user lg:min-h-[40vh] m-2 p-2 bg-sky-50 rounded-2xl flex flex-col lg:w-4/12">
+          <div className="about-user lg:min-h-[40vh] m-2 p-2 bg-sky-50 rounded-2xl flex flex-col lg:w-4/12">
             <p className="about-header text-center">About</p>
             <hr className="Phr" />
             <div className="user-details">
@@ -149,9 +152,9 @@ const Profilepage = () => {
                 Sign Out
               </button>
             </div>
-          </div> */}
+          </div>
 
-          <div className="lg:w-full lg:max-w-md px-8 py-4 mt-16 mb-16 bg-white rounded-lg shadow-lg md:justify-center">
+          {/* <div className="lg:w-full lg:max-w-md px-8 py-4 mt-16 mb-16 bg-white rounded-lg shadow-lg md:justify-center">
             <div className="flex justify-center m-1 mb-4 md:justify-start">
               <img
                 className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full"
@@ -186,7 +189,7 @@ const Profilepage = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="dynamic-content w-[100%] sm:m-2 min-h-[60vh] bg-sky-50 rounded-2xl  lg:w-8/12">
             <div className="profilenav flex">
