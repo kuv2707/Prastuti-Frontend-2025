@@ -30,6 +30,9 @@ const Separate_Event = ({ data }) => {
   const getEvent = async () => {
     showLoaderWithMessage("Fetching Details");
     const { data } = await axios.get(`http://localhost:3000/api/events`);
+    console.log(
+      data.events.find(({ Name }) => Name === Eventitle).no_of_participants
+    );
     seteventEame(
       data.events.find(({ Name }) => Name === Eventitle).no_of_participants
     );
@@ -188,7 +191,7 @@ const Separate_Event = ({ data }) => {
             {data.eventInfo}
           </p>
           <h3 className="md:text-md xl:text-lg text-justify font-[Nunito] text-md">
-            {/* Participants : <span>{data.no_of_participants}</span> */}
+            Participants : <span>{eventName}</span>
           </h3>
 
           {/* {result.team_event && <div className="font-[Nunito] mt-[1em] font-bold"> Team Event</div> }
