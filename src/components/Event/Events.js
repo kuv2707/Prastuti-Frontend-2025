@@ -53,15 +53,18 @@ const Card = (prop) => {
                 </div>
 
                 <div class="w-full py-6 px-8 text-gray-800 flex flex-col " style={{background:'linear-gradient(90deg, rgba(219,242,255,1) 0%, rgba(185,250,255,1) 100%)'}} >
-                  <h3
+                <h3
                     class="text-lg leading-tight truncate mb-2 px-2 py-1"
-                    style={{ fontFamily: "Poppins" ,color: '#fff',fontSize:'25px',
-                    textShadow: '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6', backgroundColor:"#003247"}}
-                    
+                    style={{
+                      fontFamily: "Poppins",
+                      color: "#fff",
+                      fontSize: "25px",
+                      textShadow:
+                        "0 0 10px rgba(0, 115, 230, 1), 0 0 20px rgba(0, 115, 230, 0.8), 0 0 30px rgba(0, 115, 230, 1.0)",
+                      backgroundColor: "#003247",
+                    }}
                   >
-                  
-               {item.title}
-               
+                    {item.title}
                   </h3>
                   <p class="mt-2 info">
                     {item.information}
