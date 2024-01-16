@@ -50,11 +50,6 @@ font-family: 'Manrope', sans-serif;
     width: 300px;
     height: auto;
 }
-.elearn{
-    height: auto;
-    width: 250px;
-    /* filter: brightness(50%) */
-}
 .sponscard .cardtitle{
     /* margin-top: 10px; */
     font-size: 26px;
@@ -77,17 +72,19 @@ font-family: 'Manrope', sans-serif;
 }
 
 
-.tech{
+.algo{
     width: 200px;
     height: 100%;
+     background-color: transparent;
 }
 .ieee{
     width: 200px;
     height: 100%;
 }
-.skill{
+.altair{
     width: 350px;
     height: 100%;
+     background-color: transparent;
 }
 
 @media only screen and (max-width: 600px) {
