@@ -48,11 +48,15 @@ const Profilepage = () => {
         showLoaderWithMessage("Fetching Details");
         console.log(localStorage.getItem("loginData"));
         const { data } = await axios.get(
-          `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
+          `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+            "loginData"
+          )}`
         );
         console.log(data);
 
-        const datas = await axios.get(`http://localhost:3000/api/events`);
+        const datas = await axios.get(
+          `https://prastuti-24.onrender.com/api/events`
+        );
         // console.log(datas.data);
         let links = {};
 

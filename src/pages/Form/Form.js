@@ -26,7 +26,9 @@ const Form1 = () => {
   useEffect(() => {
     const checkFormFilled = async () => {
       const { data } = await axios.get(
-        `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
+        `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+          "loginData"
+        )}`
       );
       if (data[0].isFormFilled) {
         window.location.replace("/");
@@ -87,7 +89,9 @@ const Form1 = () => {
   const UpdateData = async () => {
     try {
       const data = await axios.put(
-        `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`,
+        `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+          "loginData"
+        )}`,
         {
           Name: value.Name,
           College: value.College,
