@@ -24,7 +24,7 @@ const RequestCard = (prop) => {
 
   const gettingteam = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/api/teams/${prop.data.team}`
+      `https://prastuti-24.onrender.com/api/teams/${prop.data.team}`
     );
     setvalue(data.team.Team_Name);
   };
@@ -35,7 +35,7 @@ const RequestCard = (prop) => {
     showLoaderWithMessage("Accepting Request");
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/request/accept`,
+        `https://prastuti-24.onrender.com/api/request/accept`,
         {
           requestId: prop.data._id,
         }
@@ -73,7 +73,7 @@ const RequestCard = (prop) => {
     try {
       showLoaderWithMessage("Declining Request");
       const response = await axios.delete(
-        `http://localhost:3000/api/request/`,
+        `https://prastuti-24.onrender.com/api/request/`,
         {
           data: { requestId: prop.data._id },
         }

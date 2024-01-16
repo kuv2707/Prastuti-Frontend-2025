@@ -44,9 +44,12 @@ const Register = () => {
   const onSuccess = async (res) => {
     showLoaderWithMessage("Signing In");
     setProfile(res.profileObj);
-    const data = await axios.post(`http://localhost:3000/api/login`, {
-      tokenId: res.tokenId,
-    });
+    const data = await axios.post(
+      `https://prastuti-24.onrender.com/api/login`,
+      {
+        tokenId: res.tokenId,
+      }
+    );
     localStorage.setItem("loginData", data.data.user._id);
     hideLoader();
     if (data.data.user.isFormFilled) {
