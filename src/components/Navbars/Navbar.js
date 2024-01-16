@@ -53,8 +53,8 @@ const Navbar = () => {
           <h1 className="text-white text-2xl font-['Manrope'] font-black px-3 ml-2 drop-shadow-lg">
             <Link smooth to="/#">
               <img
-                src={require("./prastuti-logo.png")}
-                alt="Prastuti'23"
+                src={require("./prastuti 24.png")}
+                alt="Prastuti'24"
                 className="Navlogo"
               />
             </Link>
