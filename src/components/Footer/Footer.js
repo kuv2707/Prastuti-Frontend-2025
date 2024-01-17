@@ -6,7 +6,6 @@ import {BsFacebook} from 'react-icons/bs'
 import {BsLinkedin} from 'react-icons/bs'
 import {BsTwitter} from 'react-icons/bs'
 import {BsYoutube} from 'react-icons/bs'
-import {IoLogoGooglePlaystore} from "react-icons/io5";
 import { IconContext } from "react-icons";
 const Footer = () => {
 
@@ -45,7 +44,7 @@ const Footer = () => {
               </li> */}
               {/* <p className="text-white font-['Nunito'] mt-[5px]">Our App</p> */}
           </div>
-          
+        <div>
           <ul className='flex justify-center py-2'>
               <li className="social-links font-['Nunito'] text-white mx-5 text-l my-4">
               <a href="https://twitter.com/fest_prastuti?t=KdlkevmuvhbFQHx63dibXA&s=08" target="_blank" rel="noreferrer"><IconContext.Provider value={{ className: 'react-icons'}}><BsTwitter className=""/></IconContext.Provider>
@@ -67,9 +66,9 @@ const Footer = () => {
               <a href="https://www.youtube.com/@prastuti2023" target="_blank" rel="noreferrer"><IconContext.Provider value={{ className: 'react-icons' }}><BsYoutube className=""/></IconContext.Provider>
               </a>
               </li>
+            
               
-              
-            </ul>
+            </ul></div>
 
       </div>
       </footer>

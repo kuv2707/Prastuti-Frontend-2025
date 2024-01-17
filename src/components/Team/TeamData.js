@@ -14,6 +14,7 @@ import c15 from './prastuti-photos/VishalSharma.jpg'
 import c16 from './prastuti-photos/Yashpal.jpg'
 import c17 from './prastuti-photos/Khushi.jpg'
 import c18 from './prastuti-photos/Shiddharth.jpeg'
+import c19 from './prastuti-photos/Rishabh.jpg'
 const data = {
   convener: [
     {
@@ -110,7 +111,7 @@ const data = {
     },
     {
       id: 15,
-      img: c16,
+      img: c19,
       position: 'Recognizance',
       name:'Rishabh'
     },
