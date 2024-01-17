@@ -30,9 +30,9 @@ const About = () => {
         </h4>
 
         <h4 class="aboutPara text-xl text-justify lg:text-1.5xl sm:w-[60%]">
-          Mark your calendars! This year, from <strong>DATE</strong> Prastuti
-          returns, bigger and better than ever. Get ready to embark on a
-          thrilling journey through the latest technological advancements,
+          Mark your calendars! This year, from <strong>17 January 2024 </strong>
+          Prastuti returns, bigger and better than ever. Get ready to embark on
+          a thrilling journey through the latest technological advancements,
           competing in innovative challenges across diverse disciplines.
         </h4>
       </div>

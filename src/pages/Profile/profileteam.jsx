@@ -25,11 +25,14 @@ const Requestsent = (prop) => {
   const sendRequest = async (id) => {
     try {
       showLoaderWithMessage("Sending Request");
-      const response = await axios.post(`http://localhost:3000/api/request/`, {
-        recepient_email: email,
-        team_id: id,
-        user_id: localStorage.getItem("loginData"),
-      });
+      const response = await axios.post(
+        `https://prastuti-24.onrender.com/api/request/`,
+        {
+          recepient_email: email,
+          team_id: id,
+          user_id: localStorage.getItem("loginData"),
+        }
+      );
       hideLoader();
       toast.success(response.data.message, {
         position: "top-right",
@@ -122,11 +125,14 @@ const Profileteam = (prop) => {
     try {
       if (value) {
         showLoaderWithMessage("Creating Team");
-        const response = await axios.post(`http://localhost:3000/api/teams`, {
-          userID: localStorage.getItem("loginData"),
-          Team_Name: value,
-          Member_Count: 1,
-        });
+        const response = await axios.post(
+          `https://prastuti-24.onrender.com/api/teams`,
+          {
+            userID: localStorage.getItem("loginData"),
+            Team_Name: value,
+            Member_Count: 1,
+          }
+        );
         hideLoader();
         toast.success(response.data.message, {
           position: "top-right",
