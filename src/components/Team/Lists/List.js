@@ -1,7 +1,7 @@
 import ListNames from "./ListNames";
 import "./side.css";
 import React, { useState, useEffect } from "react";
-import { style } from "@motionone/dom";
+
 const listnamess = {
   pos_1: null,
   pos_2: null,
@@ -27,7 +27,7 @@ const listnamesNames = {
   pos_7: "Finance",
   pos_8: "Social Media",
   pos_9: "Content",
-  pos_10: "E-Sports",
+  
   pos_11: "Workshop",
 };
 
