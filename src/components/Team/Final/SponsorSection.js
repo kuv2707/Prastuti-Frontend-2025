@@ -6,7 +6,7 @@ function PosSection(props) {
   return (
     <div className={`${classes.container}`}>
       <div className={classes.pos_title} id="pos_1">
-        <h1>Convenors</h1>
+        <h1>Conveners</h1>
 
         <div className={classes.cards} id="pos_1">
           {data.convener.map((item, index) => (
