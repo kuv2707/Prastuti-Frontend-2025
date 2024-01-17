@@ -29,7 +29,9 @@ const Separate_Event = ({ data }) => {
 
   const getEvent = async () => {
     showLoaderWithMessage("Fetching Details");
-    const { data } = await axios.get(`http://localhost:3000/api/events`);
+    const { data } = await axios.get(
+      `https://prastuti-24.onrender.com/api/events`
+    );
     console.log(
       data.events.find(({ Name }) => Name === Eventitle).no_of_participants
     );
@@ -46,14 +48,16 @@ const Separate_Event = ({ data }) => {
 
   const findingteam = async (name) => {
     showLoaderWithMessage("Registering");
-    const { data } = await axios.get(`http://localhost:3000/api/teams`);
+    const { data } = await axios.get(
+      `https://prastuti-24.onrender.com/api/teams`
+    );
 
     const verifiedname = data.teams.find(({ Team_Name }) => Team_Name === name);
 
     if (verifiedname) {
       try {
         const response = await axios.post(
-          `http://localhost:3000/api/teamRegistration`,
+          `https://prastuti-24.onrender.com/api/teamRegistration`,
           {
             user_id: localStorage.getItem("loginData"),
             event_id: result._id,
@@ -106,7 +110,9 @@ const Separate_Event = ({ data }) => {
   //  console.log(result._id);
   const register = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/api/user/${localStorage.getItem("loginData")}`
+      `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+        "loginData"
+      )}`
     );
     if (!data[0].isFormFilled) {
       window.location.replace("/form");
@@ -115,7 +121,7 @@ const Separate_Event = ({ data }) => {
       try {
         showLoaderWithMessage("Registering");
         const response = await axios.post(
-          `http://localhost:3000/api/soloRegistration`,
+          `https://prastuti-24.onrender.com/api/soloRegistration`,
           {
             user_id: localStorage.getItem("loginData"),
             event_id: result._id,

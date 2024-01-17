@@ -1,7 +1,7 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
-import "./Intro.css"
+import "./Intro.css";
 const Intro = () => {
   return (
     <>
@@ -18,7 +18,7 @@ const Intro = () => {
             <TypeAnimation
               // Same String at the start will only be typed once, initially
               sequence={[
-                "PRASTUTI'23",
+                "PRASTUTI'24",
                 1000,
                 "IIT BHU",
                 800,
@@ -49,13 +49,11 @@ const Intro = () => {
               a first-hand experience of the modern industry requirements.
               Moreover, there are some iconic Guest talks to blow your mind and
               to keep the flames of advancement ignited! So, are you ready to
-              reconstruct the era of technological renaissance with
-              Prastuti'23?
+              reconstruct the era of technological renaissance with Prastuti'24?
             </p>
 
             <div className="flex justify-center justify-content p-4">
-
-              {localStorage.getItem("loginData") ?null: (
+              {localStorage.getItem("loginData") ? null : (
                 <Link to="/login">
                   <button className="linkBtn">Register</button>
                 </Link>
