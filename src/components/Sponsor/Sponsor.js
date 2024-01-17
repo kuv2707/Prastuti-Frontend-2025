@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sponsor.css";
-import image1 from './algo.png';
-import image2 from "./altair.png";
+import image1 from "./algo-removebg-preview.png";
+import image2 from "./altair-removebg-preview.png";
 export default function Spons() {
   return (
     <div className="SponsContainer" id="sponsors">
