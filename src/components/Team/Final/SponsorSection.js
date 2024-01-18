@@ -87,7 +87,7 @@ function PosSection(props) {
         </div>
       </div>
       <div className={classes.pos_title} id="pos_7">
-        <h1 id="pos_3">public relation Team</h1>
+        <h1 id="pos_3">Public Relation Team</h1>
         <div className={classes.cards}>
           {data.pr.map((item, index) => (
             <Card
