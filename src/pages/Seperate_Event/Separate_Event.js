@@ -223,13 +223,13 @@ const Separate_Event = ({ data }) => {
           )}
           <div className="conduct">
             {" "}
-            <a
+            {/* <a
               href="https://github.com/Prastuti-Fest-IIT-BHU/Prastuti-Frontend-2023/blob/main/public/code_of_conduct.md"
               target="_blank"
               rel="noreferrer"
             >
               Code of Conduct
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

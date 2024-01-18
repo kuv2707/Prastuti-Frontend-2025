@@ -1,3 +1,4 @@
+import { list } from "postcss";
 import "./side.css";
 import React, { useState, useEffect } from "react";
 function ListNames({ anchorId, itemName, active }) {
@@ -5,6 +6,7 @@ function ListNames({ anchorId, itemName, active }) {
 
   useEffect(() => {
     setAnchorTarget(document.getElementById(anchorId));
+    // console.log(ListNames);
   }, [anchorId]);
 
   function handleClick(e) {
@@ -18,7 +20,8 @@ function ListNames({ anchorId, itemName, active }) {
 
   return (
     <li className="box">
-      <a className="anchor"
+      <a
+        className="anchor"
         href={`#${itemName}`}
         onClick={handleClick}
         aria-label={`Scroll to ${itemName}`}
