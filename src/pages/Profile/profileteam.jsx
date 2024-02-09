@@ -196,7 +196,7 @@ const Profileteam = (prop) => {
                 <div
                   className="psubchild1team"
                   style={{
-                    backgroundImage: `url("/profile/team.jpg")`,
+                    backgroundImage: `url("/profile/Prastuti Logo black dp.png")`,
                   }}
                 ></div>
                 <div className="psubchildteam">
