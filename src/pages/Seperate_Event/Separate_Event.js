@@ -30,7 +30,7 @@ const Separate_Event = ({ data }) => {
   const getEvent = async () => {
     showLoaderWithMessage("Fetching Details");
     const { data } = await axios.get(
-      `https://prastuti-24.onrender.com/api/events`
+      `https://kind-gold-squirrel.cyclic.app/api/events`
     );
     console.log(
       data.events.find(({ Name }) => Name === Eventitle).no_of_participants
@@ -49,7 +49,7 @@ const Separate_Event = ({ data }) => {
   const findingteam = async (name) => {
     showLoaderWithMessage("Registering");
     const { data } = await axios.get(
-      `https://prastuti-24.onrender.com/api/teams`
+      `https://kind-gold-squirrel.cyclic.app/api/teams`
     );
 
     const verifiedname = data.teams.find(({ Team_Name }) => Team_Name === name);
@@ -57,7 +57,7 @@ const Separate_Event = ({ data }) => {
     if (verifiedname) {
       try {
         const response = await axios.post(
-          `https://prastuti-24.onrender.com/api/teamRegistration`,
+          `https://kind-gold-squirrel.cyclic.app/api/teamRegistration`,
           {
             user_id: localStorage.getItem("loginData"),
             event_id: result._id,
@@ -110,7 +110,7 @@ const Separate_Event = ({ data }) => {
   //  console.log(result._id);
   const register = async () => {
     const { data } = await axios.get(
-      `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+      `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
         "loginData"
       )}`
     );
@@ -121,7 +121,7 @@ const Separate_Event = ({ data }) => {
       try {
         showLoaderWithMessage("Registering");
         const response = await axios.post(
-          `https://prastuti-24.onrender.com/api/soloRegistration`,
+          `https://kind-gold-squirrel.cyclic.app/api/soloRegistration`,
           {
             user_id: localStorage.getItem("loginData"),
             event_id: result._id,

@@ -24,7 +24,7 @@ const RequestCard = (prop) => {
 
   const gettingteam = async () => {
     const { data } = await axios.get(
-      `https://prastuti-24.onrender.com/api/teams/${prop.data.team}`
+      `https://kind-gold-squirrel.cyclic.app/api/teams/${prop.data.team}`
     );
     setvalue(data.team.Team_Name);
   };
@@ -35,7 +35,7 @@ const RequestCard = (prop) => {
     showLoaderWithMessage("Accepting Request");
     try {
       const response = await axios.post(
-        `https://prastuti-24.onrender.com/api/request/accept`,
+        `https://kind-gold-squirrel.cyclic.app/api/request/accept`,
         {
           requestId: prop.data._id,
         }
@@ -73,7 +73,7 @@ const RequestCard = (prop) => {
     try {
       showLoaderWithMessage("Declining Request");
       const response = await axios.delete(
-        `https://prastuti-24.onrender.com/api/request/`,
+        `https://kind-gold-squirrel.cyclic.app/api/request/`,
         {
           data: { requestId: prop.data._id },
         }

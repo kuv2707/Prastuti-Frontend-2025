@@ -26,7 +26,7 @@ const Form1 = () => {
   useEffect(() => {
     const checkFormFilled = async () => {
       const { data } = await axios.get(
-        `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+        `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
           "loginData"
         )}`
       );
@@ -89,7 +89,7 @@ const Form1 = () => {
   const UpdateData = async () => {
     try {
       const data = await axios.put(
-        `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+        `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
           "loginData"
         )}`,
         {

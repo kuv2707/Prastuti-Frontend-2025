@@ -45,7 +45,7 @@ const Register = () => {
     showLoaderWithMessage("Signing In");
     setProfile(res.profileObj);
     const data = await axios.post(
-      `https://prastuti-24.onrender.com/api/login`,
+      `https://kind-gold-squirrel.cyclic.app/api/login`,
       {
         tokenId: res.tokenId,
       }
