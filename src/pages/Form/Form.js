@@ -365,11 +365,12 @@ const Form1 = () => {
 
                       <div className="flex-1 mt-6">
                         <label className="block font-Manrope mb-2 text-sm text-gray-600">
-                          College Name
+                          College<span style={{ color: "red" }}>*</span>
                         </label>
                         <input
                           type="text"
                           name="College"
+                          required="true"
                           onChange={inserData}
                           placeholder="IIT (BHU) Varanasi"
                           className="block font-Catamaran w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
