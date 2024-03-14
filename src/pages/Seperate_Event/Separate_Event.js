@@ -160,7 +160,7 @@ const Separate_Event = ({ data }) => {
     if (result.team_event) {
       handleModal(true);
       // let teamName = prompt(
-      //   "Please enter your team name that you have created in profil epage",
+      //   "Please enter your team name that you have created in the profile page",
       //   "team name"
       // );
       // findingteam(teamName);
