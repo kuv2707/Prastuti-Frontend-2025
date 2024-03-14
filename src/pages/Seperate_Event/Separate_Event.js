@@ -190,10 +190,10 @@ const Separate_Event = ({ data }) => {
           {data.title === "Recognizance" && (
             <div dangerouslySetInnerHTML={{ __html: data.sponsorInfo }} />
           )}
-          <h1 className="font-bold text-3xl md:text-2xl mt-4 mb-2 font-[Poppins]">
+          <h1 className="font-bold text-3xl md:text-2xl mt-7 mb-1 font-[Poppins]">
             {data.title}
           </h1>
-          <h2 className="md:text-xl xl:text-2xl mb-4 text-[#29ffff] font-[Poppins] text-lg">
+          <h2 className="md:text-xl xl:text-2xl mb-3 text-[#29ffff] font-[Poppins] text-lg">
             {data.subtitle}
           </h2>
           <p className="md:text-md xl:text-lg text-justify font-[Nunito] text-md mb-4">
