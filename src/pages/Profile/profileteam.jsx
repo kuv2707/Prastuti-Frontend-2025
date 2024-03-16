@@ -26,7 +26,7 @@ const Requestsent = (prop) => {
     try {
       showLoaderWithMessage("Sending Request");
       const response = await axios.post(
-        `https://prastuti-24.onrender.com/api/request/`,
+        `https://kind-gold-squirrel.cyclic.app/api/request/`,
         {
           recepient_email: email,
           team_id: id,
@@ -126,7 +126,7 @@ const Profileteam = (prop) => {
       if (value) {
         showLoaderWithMessage("Creating Team");
         const response = await axios.post(
-          `https://prastuti-24.onrender.com/api/teams`,
+          `https://kind-gold-squirrel.cyclic.app/api/teams`,
           {
             userID: localStorage.getItem("loginData"),
             Team_Name: value,
@@ -196,7 +196,7 @@ const Profileteam = (prop) => {
                 <div
                   className="psubchild1team"
                   style={{
-                    backgroundImage: `url("/profile/team.jpg")`,
+                    backgroundImage: `url("/profile/Prastuti Logo black dp.png")`,
                   }}
                 ></div>
                 <div className="psubchildteam">

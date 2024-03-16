@@ -9,19 +9,19 @@
   box-shadow: rgba(86, 87, 87, 0.832) 5px 6px 7px 1px;
   padding: 5px;
 }
+
 .psubchild1team {
   position: absolute;
   left: -10%;
   top: 20%;
   border-radius: 1rem;
   background: linear-gradient(90deg, rgba(219, 242, 255, 1) 0%, #b5c8e8 100%);
-
   background-position: center center;
   background-size: cover;
   height: 60%;
   width: 20%;
   box-shadow: rgba(110, 109, 109, 0.832) 5px 6px 7px 1px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .teamname {

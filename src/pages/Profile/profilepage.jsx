@@ -48,14 +48,14 @@ const Profilepage = () => {
         showLoaderWithMessage("Fetching Details");
         console.log(localStorage.getItem("loginData"));
         const { data } = await axios.get(
-          `https://prastuti-24.onrender.com/api/user/${localStorage.getItem(
+          `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
             "loginData"
           )}`
         );
         console.log(data);
 
         const datas = await axios.get(
-          `https://prastuti-24.onrender.com/api/events`
+          `https://kind-gold-squirrel.cyclic.app/api/events`
         );
         // console.log(datas.data);
         let links = {};
