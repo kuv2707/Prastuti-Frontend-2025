@@ -35,8 +35,9 @@ const eventData={
     },
   
     recognizance : {
-  
+      
       title : "Recognizance",
+      sponsorInfo : `<p>Sponsored by &nbsp;<img src="https://techkriti.org/static/media/altair.ed263b778d4cbfb3cc91.jpg" style="height: 30px; width: 160px; display: inline;"></p>`,
       subtitle : "The Machine Learning Event",
       imgpath : "./eventImages/recognizance.jpg",
       eventInfo : `An event like Recognizance, the Machine
@@ -47,13 +48,13 @@ const eventData={
       electrical domain. It will involve electrical
       applications like Load forecasting, Power
       production forecasting, Fault detection,
-      Circuit Breakers, Smart Grid etc.`
-    
+      Circuit Breakers, Smart Grid etc.`, 
+      prize : "Prize money : 15k", 
+      aboutSponsor : "Altair brings over 30+ years of expertise in Data Science and Data Preparation, delivering proven solutions across various industries such as BFSI, Retail, Manufacturing, and Engineering. With Altair RapidMiner, a robust desktop and cloud-based platform, including a new-generation SaaS Cloud platform, Altair enhances its end-to-end data analytics portfolio. This empowers customers to comprehensively understand, transform, act on, and automate their data. The primary aim of this contest is to encourage engineers to delve into Altair RapidMiner, making the use of this tool mandatory."
     },
   
   
     simulim : {
-  
       title : "Simulim",
       subtitle : "The Power Electronics Event",
       imgpath : "./eventImages/simulim.jpg",
