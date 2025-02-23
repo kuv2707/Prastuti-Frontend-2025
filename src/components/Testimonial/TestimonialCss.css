@@ -30,7 +30,7 @@ body.overflow {
 .MainTestimonial {
   display: block;
 }
-.mySwiper{
+.mySwiper {
   background: url("../Design/light+circle.png");
 }
 .swiper-button-prev,
@@ -61,7 +61,16 @@ a {
   position: relative;
   overflow: hidden;
   text-align: center;
-  background-color: radial-gradient(circle,#003247 0%, #013147 10%,#013044 20%,#003046 30%,#002f43 70% ,#01273c 90% ,#002639 100%);;
+  background-color: radial-gradient(
+    circle,
+    #003247 0%,
+    #013147 10%,
+    #013044 20%,
+    #003046 30%,
+    #002f43 70%,
+    #01273c 90%,
+    #002639 100%
+  );
 }
 .experiment {
   position: absolute;
@@ -75,7 +84,16 @@ a {
   height: 400px;
   overflow: visible;
   text-align: center;
-  background: radial-gradient(circle,#003247 0%, #013147 10%,#013044 20%,#003046 30%,#002f43 70% ,#01273c 90% ,#002639 100%);
+  background: radial-gradient(
+    circle,
+    #003247 0%,
+    #013147 10%,
+    #013044 20%,
+    #003046 30%,
+    #002f43 70%,
+    #01273c 90%,
+    #002639 100%
+  );
   box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.15);
   transition: all 0.45s ease;
 }
@@ -97,7 +115,7 @@ a {
 .experiment .experiment-number-mask span {
   position: absolute;
   top: 10px;
-  color:#1b799b;
+  color: #1b799b;
   right: -20px;
   line-height: 1;
   font-size: 8.125em;
@@ -126,7 +144,9 @@ a {
   transform: scale(1);
   transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    -webkit-transform 0.3s ease;
 }
 .experiment .experiment-title-area {
   position: relative;
@@ -144,7 +164,7 @@ a {
   font-size: 0.7em;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: 'Nunito';
+  font-family: "Nunito";
 }
 .experiment .experiment-title-area .experiment-title-label:before {
   content: "";
@@ -160,12 +180,12 @@ a {
   margin-top: -2%;
   font-size: 1.2em;
   font-weight: 800;
-  font-family:'Nunito';
+  font-family: "Nunito";
 }
 .experiment .experiment-number-area {
   display: flex;
-    justify-content: center;
-    left: 50%;
+  justify-content: center;
+  left: 50%;
   position: absolute;
   z-index: 10;
 }
@@ -228,7 +248,8 @@ a {
     left: 0;
     transition: -webkit-transform 0.58s cubic-bezier(0.694, 0.048, 0.335, 1);
     transition: transform 0.58s cubic-bezier(0.694, 0.048, 0.335, 1);
-    transition: transform 0.58s cubic-bezier(0.694, 0.048, 0.335, 1),
+    transition:
+      transform 0.58s cubic-bezier(0.694, 0.048, 0.335, 1),
       -webkit-transform 0.58s cubic-bezier(0.694, 0.048, 0.335, 1);
   }
   .experiments-mask-reveal span:first-child {
@@ -245,12 +266,12 @@ a {
 }
 @media only screen and (max-width: 64em) {
   .MainTestimonial {
-  display: none;
-}
- .showOnMobile {
+    display: none;
+  }
+  .showOnMobile {
     display: block;
   }
-  .card{
+  .card {
     height: 383px;
   }
   .experiment {
@@ -275,7 +296,6 @@ a {
   }
 }
 @media only screen and (max-width: 51.875em) {
-
   .experiment {
     float: left;
     clear: none;
@@ -285,7 +305,7 @@ a {
   }
 }
 @media only screen and (max-width: 31.25em) {
-  .card{
+  .card {
     height: 480px;
     width: 100%;
   }
@@ -321,13 +341,15 @@ a {
 
 .section-title {
   background: url("../Design/light+circle.png") bottom;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-size: 50px;
   font-weight: bold;
   text-align: center;
   letter-spacing: 2px;
   color: white;
-  text-shadow: 0 0 10px rgba(0, 115, 230, 0.8), 0 0 20px rgba(0, 115, 230, 0.5);
+  text-shadow:
+    0 0 10px rgba(0, 115, 230, 0.8),
+    0 0 20px rgba(0, 115, 230, 0.5);
   /* border-radius: 10px; */
   padding: 20px;
   /* display: inline-block; */

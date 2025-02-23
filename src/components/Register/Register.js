@@ -14,7 +14,7 @@ const Register = () => {
   const [value, setvalue] = useState(
     localStorage.getItem("loginData")
       ? JSON.parse(localStorage.getItem("loginData"))
-      : null
+      : null,
   );
   const [showLoader, setShowLoader] = useState(false);
   const [loaderText, setLoaderText] = useState("");
@@ -48,7 +48,7 @@ const Register = () => {
       `https://kind-gold-squirrel.cyclic.app/api/login`,
       {
         tokenId: res.tokenId,
-      }
+      },
     );
     localStorage.setItem("loginData", data.data.user._id);
     hideLoader();

@@ -1,6 +1,6 @@
 .wrapper {
   /* background-image: url('../../assets/img.webp'); */
-  background-color: #DBF2FF;
+  background-color: #dbf2ff;
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -12,11 +12,11 @@
   height: 100%;
   max-width: 30vw;
   position: fixed;
-  top:8.4%;
+  top: 8.4%;
   width: 300px;
   left: 1px;
   border-radius: 0;
-  background-color: #DBF2FF;
+  background-color: #dbf2ff;
   overflow-x: hidden;
   padding-top: 3px;
   text-align: left;
@@ -44,7 +44,7 @@
   font-size: 1.2em;
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content: space-around;
   padding: 0px 10px;
   list-style: none;
 }
@@ -66,7 +66,7 @@
     margin-left: 0px;
   }
   div.main {
-    display:inline-block;
+    display: inline-block;
     margin-left: 0;
   }
 }

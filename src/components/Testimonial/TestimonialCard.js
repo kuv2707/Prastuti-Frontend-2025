@@ -4,9 +4,7 @@ import React from "react";
 export default function TestimonialCard(props) {
   return (
     <div className="card">
-      <div
-        className="experiment"
-      >
+      <div className="experiment">
         <div className="experiment-mask"></div>
         <div className="experiment-circle">
           <div
@@ -19,10 +17,8 @@ export default function TestimonialCard(props) {
         </div> */}
         <div className="experiment-title-area">
           <div className="experiment-title">{props.title}</div>
-        <div className="experiment-number-area ">&nbsp;</div>
-          <div className="experiment-title-label">{props.info}
-          
-          </div>
+          <div className="experiment-number-area ">&nbsp;</div>
+          <div className="experiment-title-label">{props.info}</div>
         </div>
       </div>
     </div>

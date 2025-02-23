@@ -1,8 +1,7 @@
-
-import React from 'react'
-import img2 from './/img2.jpg'
-import img1 from './wave.png'
-import  './style.css'
+import React from "react";
+import img2 from ".//img2.jpg";
+import img1 from "./wave.png";
+import "./style.css";
 
 const Teams = () => {
   const [no_of_people, setNo_of_people] = React.useState(3);
@@ -56,4 +55,3 @@ const Teams = () => {
 };
 
 export default Teams;
-

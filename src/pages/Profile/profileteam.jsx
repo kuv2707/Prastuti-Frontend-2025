@@ -31,7 +31,7 @@ const Requestsent = (prop) => {
           recepient_email: email,
           team_id: id,
           user_id: localStorage.getItem("loginData"),
-        }
+        },
       );
       hideLoader();
       toast.success(response.data.message, {
@@ -131,7 +131,7 @@ const Profileteam = (prop) => {
             userID: localStorage.getItem("loginData"),
             Team_Name: value,
             Member_Count: 1,
-          }
+          },
         );
         hideLoader();
         toast.success(response.data.message, {

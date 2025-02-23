@@ -49,13 +49,13 @@ const Profilepage = () => {
         console.log(localStorage.getItem("loginData"));
         const { data } = await axios.get(
           `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
-            "loginData"
-          )}`
+            "loginData",
+          )}`,
         );
         console.log(data);
 
         const datas = await axios.get(
-          `https://kind-gold-squirrel.cyclic.app/api/events`
+          `https://kind-gold-squirrel.cyclic.app/api/events`,
         );
         // console.log(datas.data);
         let links = {};
@@ -77,7 +77,7 @@ const Profilepage = () => {
             event={data[0].Events_Participated}
             team={data[0].Teams}
             waLink={links}
-          />
+          />,
         );
         setrequest(data[0].Pending_Requests);
         hideLoader();
@@ -205,7 +205,7 @@ const Profilepage = () => {
                       event={event}
                       team={team}
                       waLink={eventData}
-                    />
+                    />,
                   );
                   handleevent(0);
                 }}
