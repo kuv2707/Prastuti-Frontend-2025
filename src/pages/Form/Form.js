@@ -27,8 +27,8 @@ const Form1 = () => {
     const checkFormFilled = async () => {
       const { data } = await axios.get(
         `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
-          "loginData"
-        )}`
+          "loginData",
+        )}`,
       );
       if (data[0].isFormFilled) {
         window.location.replace("/");
@@ -90,7 +90,7 @@ const Form1 = () => {
     try {
       const data = await axios.put(
         `https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
-          "loginData"
+          "loginData",
         )}`,
         {
           Name: value.Name,
@@ -100,7 +100,7 @@ const Form1 = () => {
           SocialMedia_Links: social,
           Interests: interestArray,
           isFormFilled: true,
-        }
+        },
       );
       setTimeout(() => {
         window.location.replace("/thankyou");
@@ -447,7 +447,7 @@ const Form1 = () => {
 
                                     if (
                                       interestArray.indexOf(
-                                        selected[index] !== -1
+                                        selected[index] !== -1,
                                       )
                                     ) {
                                       interestArray.push(interest);

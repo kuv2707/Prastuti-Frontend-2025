@@ -5,11 +5,11 @@
   color: white;
   font-family: "Nunito";
 }
-.box:hover{
+.box:hover {
   background-color: #bfebff;
   border-radius: 20px;
   color: black;
 }
-.item:hover{
+.item:hover {
   color: black;
 }
