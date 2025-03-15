@@ -38,7 +38,7 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 	const getEvent = async () => {
 		showLoaderWithMessage("Fetching Details");
 		const { data } = await axios.get(
-			`https://kind-gold-squirrel.cyclic.app/api/events`
+			`${import.meta.env.VITE_API_URL}/api/events`
 		);
 		console.log(
 			data.events.find(
@@ -62,7 +62,7 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 	const findingteam = async (name) => {
 		showLoaderWithMessage("Registering");
 		const { data } = await axios.get(
-			`https://kind-gold-squirrel.cyclic.app/api/teams`
+			`${import.meta.env.VITE_API_URL}/api/teams`
 		);
 
 		const verifiedname = data.teams.find(
@@ -72,7 +72,7 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 		if (verifiedname) {
 			try {
 				const response = await axios.post(
-					`https://kind-gold-squirrel.cyclic.app/api/teamRegistration`,
+					`${import.meta.env.VITE_API_URL}/api/teamRegistration`,
 					{
 						user_id: localStorage.getItem("loginData"),
 						event_id: result._id,
@@ -125,7 +125,7 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 	//  console.log(result._id);
 	const register = async () => {
 		const { data } = await axios.get(
-			`https://kind-gold-squirrel.cyclic.app/api/user/${localStorage.getItem(
+			`${import.meta.env.VITE_API_URL}/api/user/${localStorage.getItem(
 				"loginData"
 			)}`
 		);
@@ -136,7 +136,7 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 			try {
 				showLoaderWithMessage("Registering");
 				const response = await axios.post(
-					`https://kind-gold-squirrel.cyclic.app/api/soloRegistration`,
+					`${import.meta.env.VITE_API_URL}/api/soloRegistration`,
 					{
 						user_id: localStorage.getItem("loginData"),
 						event_id: result._id,

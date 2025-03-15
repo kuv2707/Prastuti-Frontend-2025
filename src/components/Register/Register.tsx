@@ -44,7 +44,7 @@ const Register = () => {
 		showLoaderWithMessage("Signing In");
 		// setProfile(res.profileObj);
 		const data = await axios.post(
-			`https://kind-gold-squirrel.cyclic.app/api/login`,
+			`${import.meta.env.VITE_API_URL}/api/login`,
 			{
 				tokenId: res.tokenId,
 			}
