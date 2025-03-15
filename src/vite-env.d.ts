@@ -2,8 +2,9 @@
 
 
 interface ImportMetaEnv {
-  VITE_API_URL: string
-  readonly VITE_APP_TITLE: string
+  VITE_API_URL: string;
+    VITE_GOOGLE_CLIENT_ID: string;
+  readonly VITE_APP_TITLE: string;
 }
 
 interface ImportMeta {

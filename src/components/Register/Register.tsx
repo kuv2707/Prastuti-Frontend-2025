@@ -26,8 +26,8 @@ const Register = () => {
 	const hideLoader = () => {
 		setShowLoader(false);
 	};
-	const clientId =
-		"313104516855-p8g6cinidljiaj6sa77ts8ov4hmiat81.apps.googleusercontent.com";
+	// const clientId =
+		// "313104516855-p8g6cinidljiaj6sa77ts8ov4hmiat81.apps.googleusercontent.com";
 	// useEffect(() => {
 	// 	const initClient = () => {
 	// 		gapi.client.init({

@@ -16,8 +16,8 @@ interface SeparateEventProps {
 
 const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 	const data = allEventsData[nameOfEvent];
-	const Eventitle = data.title;
-	console.log(Eventitle);
+	const eventTitle = data.title;
+	console.log(eventTitle);
 	const [eventName, seteventEame] = useState<string | null>(null);
 	const [result, setresult] = useState<any>(null);
 	const [teamName, setTeamName] = useState<string | null>(null);
@@ -26,7 +26,7 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 	const [modal, setModal] = useState<boolean>(false);
 	const handleModal = (value: boolean) => setModal(value);
 
-	const showLoaderWithMessage = (message) => {
+	const showLoaderWithMessage = (message: string) => {
 		setLoaderText(message);
 		setShowLoader(true);
 	};
@@ -37,21 +37,26 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 
 	const getEvent = async () => {
 		showLoaderWithMessage("Fetching Details");
-		const { data } = await axios.get(
-			`${import.meta.env.VITE_API_URL}/api/events`
+		// const { data } = await axios.get(
+		// 	`${import.meta.env.VITE_API_URL}/api/events`
+		// );
+		const data = {
+			events: [
+				{
+					Name: "Recognizance",
+					no_of_participants: "1",
+					_id: "1",
+					team_event: false,
+					teams: [],
+				}, // 1
+			],
+		};
+		const evt = data.events.find(
+			(evt) => evt.Name === eventTitle
 		);
-		console.log(
-			data.events.find(
-				({ Name: string }) => Name === Eventitle
-			).no_of_participants
-		);
-		seteventEame(
-			data.events.find(({ Name }) => Name === Eventitle)
-				.no_of_participants
-		);
-		setresult(
-			data.events.find(({ Name }) => Name === Eventitle)
-		);
+		console.log(evt);
+		seteventEame(evt.no_of_participants);
+		setresult(evt);
 		hideLoader();
 	};
 
@@ -72,7 +77,9 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 		if (verifiedname) {
 			try {
 				const response = await axios.post(
-					`${import.meta.env.VITE_API_URL}/api/teamRegistration`,
+					`${
+						import.meta.env.VITE_API_URL
+					}/api/teamRegistration`,
 					{
 						user_id: localStorage.getItem("loginData"),
 						event_id: result._id,
@@ -125,9 +132,9 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 	//  console.log(result._id);
 	const register = async () => {
 		const { data } = await axios.get(
-			`${import.meta.env.VITE_API_URL}/api/user/${localStorage.getItem(
-				"loginData"
-			)}`
+			`${
+				import.meta.env.VITE_API_URL
+			}/api/user/${localStorage.getItem("loginData")}`
 		);
 		if (!data[0].isFormFilled) {
 			window.location.replace("/form");
@@ -136,7 +143,9 @@ const Separate_Event = ({ nameOfEvent }: SeparateEventProps) => {
 			try {
 				showLoaderWithMessage("Registering");
 				const response = await axios.post(
-					`${import.meta.env.VITE_API_URL}/api/soloRegistration`,
+					`${
+						import.meta.env.VITE_API_URL
+					}/api/soloRegistration`,
 					{
 						user_id: localStorage.getItem("loginData"),
 						event_id: result._id,

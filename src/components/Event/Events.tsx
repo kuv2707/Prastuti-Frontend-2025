@@ -10,36 +10,32 @@ AOS.init();
 function Card() {
 	return (
 		<div id="events">
-			<h1 className="EventHead font-Manrope font-extrabold text-6xl mt-[20px] mb-[10px]">
+			<h1 className="EventHead font-extrabold text-[3rem] mt-[20px] mb-[10px]">
 				Events
 			</h1>
-			{Data.map((item, index) => (
-				<>
+			<div className="flex flex-wrap gap-6 justify-center">
+				{Data.map((item, index) => (
 					<div
 						key={index}
 						id="card"
-						className="pt-8 pb-12 x  {item.float} sm:m-0"
+						className="w-full sm:w-[48%] lg:w-[30%] xl:w-[23%] min-w-[280px] p-2"
 						data-aos={item.slide}
 						data-aos-duration="1000"
-						// variants={boxVariant}
-						// initial="hidden"
-						// whileInView={"visible"}
 					>
 						<motion.div
-							className="p-0 w-full min-h-[41vh] lg:w-4/5 mx-auto shadow-lg flex flex-col rounded-lg hover:shadow-xl"
+							className="p-0 w-full shadow-lg flex flex-col rounded-lg hover:shadow-xl"
 							style={{
 								background:
 									"linear-gradient(90deg, rgba(219,242,255,1) 0%, rgba(185,250,255,1) 100%)",
+								margin: "10px",
 							}}
-							whileHover={{ scale: 1.05 }}
+							whileHover={{ scale: 1.03 }}
 						>
 							<Link
 								to={item.path}
-								v-for="card in cards"
-								className="flex flex-col md:flex-row overflow-hidden
-                                    rounded-lg w-100"
+								className="flex flex-col md:flex-row overflow-hidden rounded-lg w-full"
 							>
-								<div className="h-[41vh] w-auto md:w-1/2 ">
+								<div className="h-[41vh] w-auto md:w-1/2">
 									<img
 										className="inset-0 h-full w-full object-cover object-center rounded-l-lg"
 										alt="event pic"
@@ -47,13 +43,7 @@ function Card() {
 									/>
 								</div>
 
-								<div
-									className="w-full py-6 px-8 text-gray-800 flex flex-col "
-									style={{
-										background:
-											"linear-gradient(90deg, rgba(219,242,255,1) 0%, rgba(185,250,255,1) 100%)",
-									}}
-								>
+								<div className="w-full py-6 px-8 text-gray-800 flex flex-col">
 									<h3
 										className="text-lg leading-tight truncate mb-2 px-2 py-1"
 										style={{
@@ -80,40 +70,17 @@ function Card() {
 									>
 										{item.infoinfo}
 									</p>
-									<p className="text-base text-gray-700 tracking-wide font-black ">
-										{item.team && (
-											<span className="">
-												{" "}
-												Team Event
-											</span>
-										)}
-										{!item.team && (
-											<span className="">
-												{" "}
-												Solo Event
-											</span>
-										)}
+									<p className="text-base text-gray-700 tracking-wide font-black">
+										{item.team
+											? " Team Event"
+											: " Solo Event"}
 									</p>
 								</div>
 							</Link>
 						</motion.div>
 					</div>
-
-					{/* <motion.div
-          className="progress"
-          style={{
-            scaleX,
-            position: "fixed",
-            left: "0",
-            right: "0",
-            height: "5px",
-            backgroundColor: "#29ffff",
-            bottom: "10px",
-            zIndex: "10"
-          }}
-        />  */}
-				</>
-			))}
+				))}
+			</div>
 		</div>
 	);
 }
