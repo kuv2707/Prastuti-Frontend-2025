@@ -1,7 +1,6 @@
-import List from './Lists/List';
-import classes from './Sponsors.module.css';
-import SponsorSection from './Final/SponsorSection';
-
+import List from "./Lists/List";
+import classes from "./Sponsors.module.css";
+import SponsorSection from "./Final/SponsorSection";
 
 function PrastutiTeam() {
   return (

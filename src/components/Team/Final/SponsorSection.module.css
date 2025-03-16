@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .pos_section {
@@ -29,7 +29,7 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content: space-around;
   padding-left: 32px;
 }
 .mssg {
@@ -38,46 +38,45 @@
   margin-right: 50px;
 }
 .mssg h2 {
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-size: 24px;
   font-style: normal;
   margin-top: 20px;
   font-weight: 500;
-  line-height: 33px;;
+  line-height: 33px;
   margin: 27px 36px;
   text-align: justify;
 }
 
-@media screen and (max-width: 1050px){
-  .sponsor_section{
+@media screen and (max-width: 1050px) {
+  .sponsor_section {
     margin-left: -12px;
   }
 }
 
-@media screen and (max-width: 900px){
-  .sponsor_section{
+@media screen and (max-width: 900px) {
+  .sponsor_section {
     margin-left: -10%;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .sponsor_section{
+  .sponsor_section {
     margin-left: 30px;
   }
 
-  .mssg h2{
+  .mssg h2 {
     margin: 27px 0px;
   }
 
-  .pos_title h1{
+  .pos_title h1 {
     text-align: center;
     padding-left: 0px;
   }
 
-  .cards{
+  .cards {
     display: flex;
     justify-content: space-evenly;
     padding-left: 10%;
   }
 }
-

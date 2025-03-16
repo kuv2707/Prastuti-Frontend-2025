@@ -24,7 +24,7 @@ const RequestCard = (prop) => {
 
   const gettingteam = async () => {
     const { data } = await axios.get(
-      `https://kind-gold-squirrel.cyclic.app/api/teams/${prop.data.team}`
+      `https://kind-gold-squirrel.cyclic.app/api/teams/${prop.data.team}`,
     );
     setvalue(data.team.Team_Name);
   };
@@ -38,7 +38,7 @@ const RequestCard = (prop) => {
         `https://kind-gold-squirrel.cyclic.app/api/request/accept`,
         {
           requestId: prop.data._id,
-        }
+        },
       );
       hideLoader();
       toast.success(response.data.message, {
@@ -76,7 +76,7 @@ const RequestCard = (prop) => {
         `https://kind-gold-squirrel.cyclic.app/api/request/`,
         {
           data: { requestId: prop.data._id },
-        }
+        },
       );
       hideLoader();
       toast.success(response.data.message, {

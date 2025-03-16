@@ -46,7 +46,7 @@ const Faq = () => {
         }
 
         return faq;
-      })
+      }),
     );
   };
 

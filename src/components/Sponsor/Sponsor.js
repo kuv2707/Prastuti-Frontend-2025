@@ -15,16 +15,12 @@ export default function Spons() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img
-              src={image2}
-              className="altair"
-              alt=""
-            />
+            <img src={image2} className="altair" alt="" />
           </a>
           <h1 className="cardtitle"> Title Sponsor</h1>
         </div>
-        </div>
-        <div className="line">
+      </div>
+      <div className="line">
         <div className="sponscard">
           <a
             href="https://www.ieee.org/"
@@ -40,7 +36,6 @@ export default function Spons() {
           <h1 className="cardtitle"> Learning Partner</h1>
         </div>
 
-      
         <div className="sponscard">
           <a
             href="https://www.geeksforgeeks.org/"
@@ -51,19 +46,15 @@ export default function Spons() {
           </a>
           <h1 className="cardtitle"> Events Partner</h1>
         </div>
-        </div>
-        <div className="line">
+      </div>
+      <div className="line">
         <div className="sponscard">
           <a
             href="https://algozenith.com/home"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img
-              src={image1}
-              alt=""
-              className="algo"
-            />
+            <img src={image1} alt="" className="algo" />
           </a>
           <h1 className="cardtitle"> Events Partner</h1>
         </div>
@@ -71,4 +62,3 @@ export default function Spons() {
     </div>
   );
 }
-
