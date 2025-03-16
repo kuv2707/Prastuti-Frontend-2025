@@ -41,7 +41,7 @@ export default function Sponsor() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img src="./sponsorimage/gfg.png" alt="" className="gfg" />
+            <img src="/gfg_sponsor-removebg-preview.png" alt="" className="gfg" />
           </a>
           <h1 className="cardtitle"> Events Partner</h1>
         </div>
