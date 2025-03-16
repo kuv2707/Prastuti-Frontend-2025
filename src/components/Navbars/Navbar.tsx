@@ -17,7 +17,7 @@ const NAV_LINKS = [
 	{ label: "Events", hash: "events" },
 	{ label: "FAQs", hash: "faqs" },
 	{ label: "Sponsors", hash: "sponsors" },
-	{ label: "Team", hash: "team" },
+	{ label: "Team", path: "/team" }, // Uses path instead of hash
 ];
 
 const SOCIAL_LINKS = [
@@ -57,7 +57,7 @@ const Navbar = () => {
 		body.style.overflow = mobMenu ? "auto" : "hidden";
 	};
 
-	const scrollWithOffset = (el) => {
+	const scrollWithOffset = (el: HTMLElement) => {
 		const yCoordinate =
 			el.getBoundingClientRect().top + window.pageYOffset;
 		window.scrollTo({
@@ -67,102 +67,64 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="navbar bg-[#003247]">
+		<nav className="navbar bg-[#003247] p-4">
 			<div className="flex justify-between items-center max-h-[15vh] min-h-[8vh]">
-				<div
-					className="md:hidden mx-5"
-					onClick={handleMenu}
-				>
-					<IconContext.Provider
-						value={{ className: "react-icons" }}
-					>
-						{mobMenu ? (
-							<FaArrowLeft className="cursor-pointer" />
-						) : (
-							<FaBars className="cursor-pointer" />
-						)}
-					</IconContext.Provider>
-				</div>
-				<h1 className="text-white text-2xl font-['Manrope'] font-black px-3 ml-2 drop-shadow-lg">
-					<Link smooth to="/#">
-						<img
-							src={Prastuti24}
-							alt="Prastuti'24"
-							className="Navlogo"
-						/>
-					</Link>
-				</h1>
-				<div className="flex items-center py-3 relative">
-					<ul className="hidden md:flex px-2 lg:px-5">
-						{NAV_LINKS.map(({ label, hash }) => (
-							<li
-								key={hash}
-								className="px-2 md:px-4 text-white font-['Manrope'] hover:text-[#4B7CB2] text-l"
-							>
-								<Link
-									smooth
-									to={{ pathname: "/", hash }}
-									scroll={(el) =>
-										scrollWithOffset(el)
-									}
-								>
-									{label}
-								</Link>
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-
-			<div
-				className={
-					mobMenu
-						? "md:hidden ease-in-out duration-500 absolute left-0 navMobile bg-[#003247] h-screen w-full z-20 px-5 py-8"
-						: "absolute left-[-100%] h-screen ease-in-out duration-500"
-				}
-			>
-				<div className="flex justify-between items-center w-full py-3">
-					<ul className="flex px-2 lg:px-5">
-						{NAV_LINKS.map(({ label, hash }) => (
-							<li
-								key={hash}
-								className="px-2 md:px-4 text-white hover:text-[#4B7CB2] text-l"
-							>
-								<Link
-									smooth
-									to={{ pathname: "/", hash }}
-									scroll={(el) =>
-										scrollWithOffset(el)
-									}
-								>
-									{label}
-								</Link>
-							</li>
-						))}
-					</ul>
+				<div className="flex items-center gap-4">
+					<div className="md:hidden" onClick={handleMenu}>
+						<IconContext.Provider
+							value={{ className: "react-icons" }}
+						>
+							{mobMenu ? (
+								<FaArrowLeft className="cursor-pointer text-white" />
+							) : (
+								<FaBars className="cursor-pointer text-white" />
+							)}
+						</IconContext.Provider>
+					</div>
+					<h1 className="text-white text-2xl font-['Manrope'] font-black">
+						<Link smooth to="/#">
+							<img
+								src={Prastuti24}
+								alt="Prastuti'24"
+								className="Navlogo w-32"
+							/>
+						</Link>
+					</h1>
 				</div>
 
-				<ul className="flex justify-center py-2">
-					{SOCIAL_LINKS.map(({ icon, url, label }) => (
+				<ul className="sm:hidden md:flex items-center gap-6 md:visible">
+					{NAV_LINKS.map(({ label, hash, path }) => (
 						<li
 							key={label}
-							className="social-links text-white mx-5 text-l my-4"
+							className="text-white hover:text-[#4B7CB2] text-lg"
 						>
-							<a href={url}>
-								<IconContext.Provider
-									value={{
-										className: "react-icons",
-									}}
-								>
-									{icon}
-								</IconContext.Provider>
-								<p className="hidden sm:flex">
-									{label}
-								</p>
-							</a>
+							<Link
+								smooth
+								to={{
+									pathname: path ? path : "",
+									hash,
+								}}
+								scroll={scrollWithOffset}
+							>
+								{label}
+							</Link>
 						</li>
 					))}
 				</ul>
+
+				<div className="sm:hidden flex gap-4 text-white">
+					{SOCIAL_LINKS.map(({ icon, url, label }) => (
+						<a
+							key={label}
+							href={url}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={label}
+						>
+							{icon}
+						</a>
+					))}
+				</div>
 			</div>
 		</nav>
 	);

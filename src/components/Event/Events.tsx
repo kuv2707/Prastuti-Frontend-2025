@@ -9,8 +9,11 @@ AOS.init();
 
 function Card() {
 	return (
-		<div id="events">
-			<h1 className="EventHead font-extrabold text-[3rem] mt-[20px] mb-[10px]">
+		<div
+			id="events"
+			className="max-w-[1400px] mx-auto px-6 sm:px-12"
+		>
+			<h1 className="EventHead font-extrabold text-[3rem] mt-[20px] mb-[10px] text-center">
 				Events
 			</h1>
 			<div className="flex flex-wrap gap-6 justify-center">

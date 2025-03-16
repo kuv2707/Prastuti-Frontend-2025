@@ -1,5 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
+import {
+	Navigation,
+	Mousewheel,
+	Keyboard,
+	Autoplay,
+} from "swiper/modules";
 import TestimonialCard from "./TestimonialCard";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -42,10 +47,20 @@ export default function MainTestimonial() {
 		<div style={{ width: "100%", overflow: "hidden" }}>
 			<Swiper
 				style={{ padding: "30px 60px" }}
-				modules={[Navigation, Mousewheel, Keyboard]}
+				modules={[
+					Navigation,
+					Mousewheel,
+					Keyboard,
+					Autoplay,
+				]}
 				navigation={true}
-				mousewheel={true}
+				mousewheel={{ forceToAxis: true }}
 				keyboard={true}
+				autoplay={{
+					delay: 1000,
+					disableOnInteraction: true,
+				}}
+				simulateTouch={false}
 				slidesPerView={3}
 				spaceBetween={20}
 				className="mySwiper"
