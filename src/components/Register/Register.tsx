@@ -7,6 +7,7 @@ import axios from "axios";
 import image from "./logo.png";
 import "./Register.css";
 import Loader from "../Loader/loader";
+import { toast } from "react-toastify";
 
 const Register = () => {
 	// const [profile, setProfile] = useState([]);
@@ -26,31 +27,24 @@ const Register = () => {
 	const hideLoader = () => {
 		setShowLoader(false);
 	};
-	// const clientId =
-		// "313104516855-p8g6cinidljiaj6sa77ts8ov4hmiat81.apps.googleusercontent.com";
-	// useEffect(() => {
-	// 	const initClient = () => {
-	// 		gapi.client.init({
-	// 			clientId: clientId,
-	// 			scope: "",
-	// 		});
-	// 	};
-	// 	gapi.load("client:auth2", initClient);
-	// 	if (localStorage.getItem("loginData")) {
-	// 		window.location.replace("/form");
-	// 	}
-	// });
 	const onSuccess = async (res) => {
 		showLoaderWithMessage("Signing In");
+		console.log(res)
 		// setProfile(res.profileObj);
 		const data = await axios.post(
 			`${import.meta.env.VITE_API_URL}/api/login`,
 			{
-				tokenId: res.tokenId,
+				tokenId: res.credential,
 			}
 		);
-		localStorage.setItem("loginData", data.data.user._id);
+		if(!data.data) {
+			toast.error("Login Failed");
+			hideLoader();
+		}
+		console.log(data.data)
+		localStorage.setItem("loginData", data.data);
 		hideLoader();
+		return
 		if (data.data.user.isFormFilled) {
 			window.location.replace("/profile");
 		} else {
@@ -108,9 +102,7 @@ const Register = () => {
 						>
 							<GoogleLogin
 								auto_select
-								onSuccess={(credentialResponse) => {
-									console.log(credentialResponse);
-								}}
+								onSuccess={onSuccess}
 								onError={() => {
 									console.log("Login Failed");
 								}}
