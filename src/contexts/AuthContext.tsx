@@ -14,6 +14,13 @@ export type User = {
     id: string;
 }
 
+export const emptyUser: User = {
+    _id: '',
+    email: '',
+    name: '',
+    id: '',
+};
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

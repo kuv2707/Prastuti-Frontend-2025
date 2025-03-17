@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, JSX } from "react";
 import "./profilecss.css";
-import Profileteam from "./profileteam";
-import Profilerequest from "./Profilerequest";
-import Profileevent from "./profileevent";
+import ProfileTeam from "./profileteam";
+import ProfileRequest from "./Profilerequest";
+import ProfileEvent from "./profileevent";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import Loader from "../../components/Loader/loader";
-import { useAuth } from "../../contexts/AuthContext";
+import {
+	emptyUser,
+	useAuth,
+	User,
+} from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Profilepage = () => {
 	const [addclass, setaddclass] = useState([
@@ -16,14 +21,18 @@ const Profilepage = () => {
 	]);
 	const [team, setteam] = useState(null);
 	const [event, setevent] = useState(null);
-	const [request, setrequest] = useState(null);
-	const [input, setinput] = useState([]);
-	const [value, setvalue] = useState(null);
+	const [requests, setRequests] = useState(null);
+	const [dbUser, setDbUser] = useState({});
+	const [currentTabValue, setCurrentTabValue] =
+		useState<JSX.Element>();
 	const [formFilled, setFormFilled] = useState(null);
 	const [showLoader, setShowLoader] = useState(false);
 	const [loaderText, setLoaderText] = useState("");
-	const [eventData, setEventData] = useState(null);
+	const [eventLinks, setEventLinks] = useState<
+		Record<string, string>
+	>({});
 	const auth = useAuth();
+	const navigate = useNavigate();
 
 	const showLoaderWithMessage = (message: string) => {
 		setLoaderText(message);
@@ -53,39 +62,42 @@ const Profilepage = () => {
 			const gettingData = async () => {
 				showLoaderWithMessage("Fetching Details");
 				console.log(auth.user);
-				const { data } = await axios.get(
-					`${
-						import.meta.env.VITE_API_URL
-					}/api/user/${auth.user?.id}`
+				const { data: dbusr } = await axios.get(
+					`${import.meta.env.VITE_API_URL}/api/user/${
+						auth.user?.id
+					}`
 				);
-				console.log(data);
-
+				console.log(dbusr);
+				const dbUser = dbusr[0];
 				const datas = await axios.get(
 					`${import.meta.env.VITE_API_URL}/api/events`
 				);
-				// console.log(datas.data);
-				let links = {};
+				console.log(datas, dbUser);
+				const links: Record<string, string> = {};
 
-				datas.data.events.map((data, index) => {
-					// console.log(data);
-					links[data.Name] = data.whatsappLink;
-				});
+				datas.data.events.map(
+					// todo: db event type
+					(data: { Name: string }, index) => {
+						// console.log(data);
+						links[data.Name] = data.whatsappLink;
+					}
+				);
 				// console.log(links);
 
-				setEventData(links);
+				setEventLinks(links);
 
-				setinput(data[0]);
-				setteam(data[0].Teams);
-				setFormFilled(data[0].isFormFilled);
-				setevent(data[0].Events_Participated);
-				setvalue(
-					<Profileevent
-						event={data[0].Events_Participated}
-						team={data[0].Teams}
+				setDbUser(dbUser);
+				setteam(dbUser.Teams);
+				setFormFilled(dbUser.isFormFilled);
+				setevent(dbUser.Events_Participated);
+				setCurrentTabValue(
+					<ProfileEvent
+						event={dbUser.Events_Participated}
+						team={dbUser.Teams}
 						waLink={links}
 					/>
 				);
-				setrequest(data[0].Pending_Requests);
+				setRequests(dbUser.Pending_Requests);
 				hideLoader();
 			};
 
@@ -98,7 +110,6 @@ const Profilepage = () => {
 			window.location.replace("/");
 		}
 	}, []);
-
 
 	return (
 		<>
@@ -119,16 +130,16 @@ const Profilepage = () => {
 						<div className="profilechild imgprofile">
 							<img
 								className="imgprofile"
-								src={input.Profile_Photo}
+								src={dbUser.Profile_Photo}
 								alt="user"
 							/>
 						</div>
 						<div className="profilechild">
 							<div className="Prodetails text-3xl font-bold text-black-900">
-								{input.Name}
+								{dbUser.Name}
 							</div>
 							<div className="Prodetails hidden md:flex text-l font-normal text-black-900">
-								{input.email_id}
+								{dbUser.email_id}
 							</div>
 						</div>
 					</div>
@@ -142,13 +153,13 @@ const Profilepage = () => {
 						<hr className="Phr" />
 						<div className="user-details">
 							<p className="profile-name text-center lg:text-start break-words text-xl p-1 ">
-								{input.Name}
+								{dbUser.Name}
 							</p>
 							<p className="profile-email text-center lg:text-start break-words text-l p-1 ">
-								{input.email_id}
+								{dbUser.email_id}
 							</p>
 							<p className="profile-contact text-center lg:text-start break-words text-l p-1 ">
-								+91{input.Phone}
+								+91{dbUser.Phone}
 							</p>
 						</div>
 						<div className="sign-out-btn  flex justify-center">
@@ -156,7 +167,7 @@ const Profilepage = () => {
 								className="link_404"
 								onClick={() => {
 									auth.logout();
-									window.location.replace("/");
+									navigate("/");
 								}}
 							>
 								Sign Out
@@ -169,11 +180,11 @@ const Profilepage = () => {
 							<div
 								className={`Pnavchild px-4 ${addclass[0]}`}
 								onClick={() => {
-									setvalue(
-										<Profileevent
+									setCurrentTabValue(
+										<ProfileEvent
 											event={event}
 											team={team}
-											waLink={eventData}
+											waLink={eventLinks}
 										/>
 									);
 									handleevent(0);
@@ -184,8 +195,8 @@ const Profilepage = () => {
 							<div
 								className={`Pnavchild px-4 ${addclass[1]}`}
 								onClick={() => {
-									setvalue(
-										<Profileteam
+									setCurrentTabValue(
+										<ProfileTeam
 											team={team}
 											data={formFilled}
 										/>
@@ -198,9 +209,9 @@ const Profilepage = () => {
 							<div
 								className={`Pnavchild px-4 ${addclass[2]}`}
 								onClick={() => {
-									setvalue(
-										<Profilerequest
-											request={request}
+									setCurrentTabValue(
+										<ProfileRequest
+											request={requests}
 											team={team}
 										/>
 									);
@@ -211,7 +222,7 @@ const Profilepage = () => {
 							</div>
 						</div>
 						<hr className="Phr" />
-						{value}
+						{currentTabValue}
 					</div>
 				</div>
 			</div>

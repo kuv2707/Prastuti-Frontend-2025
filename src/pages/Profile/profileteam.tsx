@@ -10,7 +10,7 @@ import { useAuth } from "../../contexts/AuthContext";
 // toast.configure();
 
 const Requestsent = (prop) => {
-	const [email, setemail] = useState(null);
+	const [email, setemail] = useState("");
 	const [showLoader, setShowLoader] = useState(false);
 	const [loaderText, setLoaderText] = useState("");
 	const auth = useAuth();
@@ -67,13 +67,24 @@ const Requestsent = (prop) => {
 		<>
 			{showLoader ? <Loader text={loaderText} /> : null}
 
-			<div className="eventname">
+			<div
+				className="eventname"
+				style={{
+					backgroundColor: "",
+					border: "1px solid grey",
+					borderRadius: "5px",
+				}}
+			>
 				<input
 					type="text"
 					name="member"
 					autoComplete="off"
-					// placeholder="Recipient email"
-					style={{ fontSize: "1rem" }}
+					placeholder="Add email"
+					style={{
+						fontSize: "1rem",
+						border: "none",
+						borderRadius: "5px",
+					}}
 					value={email}
 					onChange={(e) => {
 						setemail(e.target.value);
@@ -82,7 +93,7 @@ const Requestsent = (prop) => {
 			</div>
 			<div className="sign-out-btn  flex justify-center">
 				<button
-					class="link_404"
+					className="link_404"
 					onClick={() => sendRequest(prop.id)}
 					style={{
 						fontSize: "1rem",
@@ -107,7 +118,7 @@ const Profileteam = (prop) => {
 	const [loaderText, setLoaderText] = useState("");
 	const auth = useAuth();
 
-	const showLoaderWithMessage = (message) => {
+	const showLoaderWithMessage = (message: string) => {
 		setLoaderText(message);
 		setShowLoader(true);
 	};
@@ -259,7 +270,7 @@ const Profileteam = (prop) => {
 								</span>
 								<div className="sign-out-btn  flex justify-center">
 									<button
-										class="link_404"
+										className="link_404"
 										style={{
 											fontSize: "1rem",
 											marginTop: "13px",
