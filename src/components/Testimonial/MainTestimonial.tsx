@@ -14,31 +14,31 @@ const testimonials = [
 		number: "01",
 		info: `Prastuti provides students with the platform and the push to meet the most contemporary demands- renewable energy and computer interface within electronics and electrical engineering.`,
 		title: "Head of Department EEE, Dr. R.K. Pandey",
-		image: "url(./TestimonialImages/rkpandey.jpg)",
+		image: "url(/eee_faculty_rkpandey.jpg)",
 	},
 	{
 		number: "05",
 		info: `With Prastuti an effort will be made to provide a platform to students, innovative industries, startups, and interface sectors to showcase the development and demonstration of respective products.`,
 		title: "Mentor Professor, Dr. Soumya R Mohanty",
-		image: "url(./TestimonialImages/srm.png)",
+		image: "url(/SRMSir.jpg)",
 	},
 	{
 		number: "09",
 		info: `Prastuti provided me with the platform and opportunity to grow and learn about technology and web development in particular.`,
 		title: "Prastuti'22 Participant, Himanshu Kaithal",
-		image: "url(./TestimonialImages/himanshu.jpg)",
+		image: "url(/manpic.jpeg)",
 	},
 	{
 		number: "09",
 		info: `Attending the fest was an unforgettable experience. I had the opportunity to witness cutting-edge technology and network with like-minded individuals.`,
 		title: "Prastuti'22 Organizer, Atul Kumar",
-		image: "url(./TestimonialImages/atul.jpg)",
+		image: "url(/manpic.jpeg)",
 	},
 	{
 		number: "09",
 		info: `The Prastuti Technical fest is a fantastic opportunity to learn, grow, and be inspired. I highly recommend it to anyone interested in technology and innovation.`,
 		title: "Prastuti'23 Senior Advisor, Shreyash Singh",
-		image: "url(./TestimonialImages/shreyash.jpg)",
+		image: "url(/manpic.jpeg)",
 	},
 ];
 
