@@ -14,7 +14,8 @@ import Profilepage from "./pages/Profile/profilepage";
 // import Loader from "./components/Loader/loader";
 import Thankyou from "./pages/Thank_You/Thank_you";
 
-// import Form from "./pages/Form/Form";
+import Form from "./pages/Form/Form";
+import StaticNav from "./components/Navbars/staticNav";
 
 function App() {
 	return (
@@ -128,15 +129,15 @@ function App() {
 							</>
 						}
 					></Route>
-					{/* <Route
-					path="/form"
-					element={
-						<>
-            <StaticNav />
-            <Form />
-						</>
-            }
-            /> */}
+					<Route
+						path="/form"
+						element={
+							<>
+								<StaticNav />
+								<Form />
+							</>
+						}
+					/>
 					<Route path="/*" element={<Error />} />
 					<Route
 						path="/profile"

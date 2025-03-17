@@ -13,11 +13,11 @@ import { useState } from "react";
 import Prastuti24 from "../../assets/prastuti 24.png";
 
 const NAV_LINKS = [
-	{ label: "About", hash: "about" },
-	{ label: "Events", hash: "events" },
-	{ label: "FAQs", hash: "faqs" },
-	{ label: "Sponsors", hash: "sponsors" },
-	{ label: "Team", path: "/team" }, // Uses path instead of hash
+	{ label: "About", hash: "about", path: "/" },
+	{ label: "Events", hash: "events", path: "/" },
+	{ label: "FAQs", hash: "faqs", path: "/" },
+	{ label: "Sponsors", hash: "sponsors", path: "/" },
+	{ label: "Team", path: "/team" },
 ];
 
 const SOCIAL_LINKS = [
@@ -102,7 +102,7 @@ const Navbar = () => {
 								smooth
 								to={{
 									pathname: path ? path : "",
-									hash,
+									hash: hash,
 								}}
 								scroll={scrollWithOffset}
 							>

@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/loader";
+import { useAuth } from "../../contexts/AuthContext";
 
 // toast.configure();
 
@@ -12,6 +13,7 @@ const Requestsent = (prop) => {
 	const [email, setemail] = useState(null);
 	const [showLoader, setShowLoader] = useState(false);
 	const [loaderText, setLoaderText] = useState("");
+	const auth = useAuth();
 
 	const showLoaderWithMessage = (message) => {
 		setLoaderText(message);
@@ -30,7 +32,7 @@ const Requestsent = (prop) => {
 				{
 					recepient_email: email,
 					team_id: id,
-					user_id: localStorage.getItem("loginData"),
+					user_id: auth.user?.id,
 				}
 			);
 			hideLoader();
@@ -103,6 +105,7 @@ const Profileteam = (prop) => {
 	const [value, setvalue] = useState(null);
 	const [showLoader, setShowLoader] = useState(false);
 	const [loaderText, setLoaderText] = useState("");
+	const auth = useAuth();
 
 	const showLoaderWithMessage = (message) => {
 		setLoaderText(message);
@@ -128,7 +131,7 @@ const Profileteam = (prop) => {
 				const response = await axios.post(
 					`${import.meta.env.VITE_API_URL}/api/teams`,
 					{
-						userID: localStorage.getItem("loginData"),
+						userID: auth.user?.id,
 						Team_Name: value,
 						Member_Count: 1,
 					}

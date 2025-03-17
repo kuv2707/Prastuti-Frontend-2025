@@ -1,8 +1,10 @@
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
 import "./Intro.css";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Intro = () => {
+	const auth = useAuth();
 	return (
 		<>
 			<div className="flex justify-center items-center flex-wrap overflow-hidden IntroContainer">
@@ -57,12 +59,16 @@ const Intro = () => {
 						</p>
 
 						<div className="flex justify-center p-4">
-							{localStorage.getItem(
-								"loginData"
-							) ? null : (
+							{!auth.isAuthenticated ? (
 								<Link to="/login">
 									<button className="linkBtn">
 										Register
+									</button>
+								</Link>
+							) : (
+								<Link to="/profile">
+									<button className="linkBtn">
+										Profile
 									</button>
 								</Link>
 							)}

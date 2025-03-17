@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Form1 = () => {
+	const auth = useAuth();
 	// const [selected, setSelected] = useState();
 	const [value, setvalue] = useState({
 		Name: "",
@@ -15,20 +17,12 @@ const Form1 = () => {
 	const [social, setsocial] = useState(["", "", ""]);
 	const [toasts, setToast] = useState(true);
 
-	// const checkFormFilled = async () => {
-	//   const { data } = await axios.get(`${process.env.REACT_APP_SECRET_KEY}/api/user/${localStorage.getItem("loginData")}`);
-	//   if (data[0].isFormFilled) {
-	//     return true;
-	//   }
-	//   return false;
-	// }
-
 	useEffect(() => {
 		const checkFormFilled = async () => {
 			const { data } = await axios.get(
-				`${import.meta.env.VITE_API_URL}/api/user/${localStorage.getItem(
-					"loginData"
-				)}`
+				`${
+					import.meta.env.VITE_API_URL
+				}/api/user/${auth.user?.id}`
 			);
 			if (data[0].isFormFilled) {
 				window.location.replace("/");
@@ -89,9 +83,9 @@ const Form1 = () => {
 	const UpdateData = async () => {
 		try {
 			const data = await axios.put(
-				`${import.meta.env.VITE_API_URL}/api/user/${localStorage.getItem(
-					"loginData"
-				)}`,
+				`${
+					import.meta.env.VITE_API_URL
+				}/api/user/${auth.user?.id}`,
 				{
 					Name: value.Name,
 					College: value.College,
@@ -115,7 +109,7 @@ const Form1 = () => {
 		UpdateData();
 	}
 
-	if (!localStorage.getItem("loginData")) {
+	if (!auth.isAuthenticated) {
 		window.location.replace("/");
 		return;
 	}

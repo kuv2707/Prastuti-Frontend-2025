@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { GoogleLogin } from "@react-oauth/google";
+import React, { useState } from "react";
+import { GoogleCredentialResponse, GoogleLogin } from "@react-oauth/google";
 // import image from "../assets/Register/logo.png";
 // import style from "../assets/Register/style.css"
 import axios from "axios";
@@ -8,17 +8,14 @@ import image from "./logo.png";
 import "./Register.css";
 import Loader from "../Loader/loader";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Register = () => {
-	// const [profile, setProfile] = useState([]);
-	// const [value, setvalue] = useState(
-	// 	localStorage.getItem("loginData")
-	// 		? JSON.parse(localStorage.getItem("loginData"))
-	// 		: null
-	// );
 	const [showLoader, setShowLoader] = useState(false);
 	const [loaderText, setLoaderText] = useState("");
-
+	const navigate = useNavigate();
+	const auth = useAuth();
 	const showLoaderWithMessage = (message: string) => {
 		setLoaderText(message);
 		setShowLoader(true);
@@ -27,9 +24,9 @@ const Register = () => {
 	const hideLoader = () => {
 		setShowLoader(false);
 	};
-	const onSuccess = async (res) => {
+	const onSuccess = async (res: GoogleCredentialResponse) => {
 		showLoaderWithMessage("Signing In");
-		console.log(res)
+		console.log(res);
 		// setProfile(res.profileObj);
 		const data = await axios.post(
 			`${import.meta.env.VITE_API_URL}/api/login`,
@@ -37,27 +34,20 @@ const Register = () => {
 				tokenId: res.credential,
 			}
 		);
-		if(!data.data) {
+		if (!data.data) {
 			toast.error("Login Failed");
 			hideLoader();
 		}
-		console.log(data.data)
-		localStorage.setItem("loginData", data.data);
+		console.log(data.data);
+		auth.login(data.data.user);
 		hideLoader();
-		return
 		if (data.data.user.isFormFilled) {
-			window.location.replace("/profile");
+			navigate("/profile");
 		} else {
-			window.location.replace("/form");
+			navigate("/form");
 		}
 	};
 
-
-	const logOut = () => {
-		localStorage.removeItem("loginData");
-		// setProfile(null);
-		// setvalue(null);
-	};
 	return (
 		<div className="main relative bg-no-repeat bg-cover h-screen light-gradient bg-center">
 			{showLoader ? <Loader text={loaderText} /> : null}
@@ -94,7 +84,7 @@ const Register = () => {
 								className="w-[25rem] h-[25rem] "
 							/>
 						</div>
-						
+
 						<div
 							className="align-top justify-center w-5/6
 						px-4 py-3 font-bold text-black text-center

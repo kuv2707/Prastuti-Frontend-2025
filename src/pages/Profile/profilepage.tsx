@@ -6,6 +6,7 @@ import Profileevent from "./profileevent";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import Loader from "../../components/Loader/loader";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Profilepage = () => {
 	const [addclass, setaddclass] = useState([
@@ -22,8 +23,9 @@ const Profilepage = () => {
 	const [showLoader, setShowLoader] = useState(false);
 	const [loaderText, setLoaderText] = useState("");
 	const [eventData, setEventData] = useState(null);
+	const auth = useAuth();
 
-	const showLoaderWithMessage = (message) => {
+	const showLoaderWithMessage = (message: string) => {
 		setLoaderText(message);
 		setShowLoader(true);
 	};
@@ -47,14 +49,14 @@ const Profilepage = () => {
 		}
 	}
 	useEffect(() => {
-		if (localStorage.getItem("loginData")) {
+		if (auth.isAuthenticated) {
 			const gettingData = async () => {
 				showLoaderWithMessage("Fetching Details");
-				console.log(localStorage.getItem("loginData"));
+				console.log(auth.user);
 				const { data } = await axios.get(
-					`${import.meta.env.VITE_API_URL}/api/user/${localStorage.getItem(
-						"loginData"
-					)}`
+					`${
+						import.meta.env.VITE_API_URL
+					}/api/user/${auth.user?.id}`
 				);
 				console.log(data);
 
@@ -89,7 +91,7 @@ const Profilepage = () => {
 
 			gettingData();
 			const interval = setInterval(() => {
-				localStorage.removeItem("loginData");
+				auth.logout();
 			}, 6000000);
 			return () => clearInterval(interval);
 		} else {
@@ -97,10 +99,6 @@ const Profilepage = () => {
 		}
 	}, []);
 
-	if (!localStorage.getItem("loginData")) {
-		window.location.replace("/");
-		return;
-	}
 
 	return (
 		<>
@@ -155,11 +153,9 @@ const Profilepage = () => {
 						</div>
 						<div className="sign-out-btn  flex justify-center">
 							<button
-								class="link_404"
+								className="link_404"
 								onClick={() => {
-									localStorage.removeItem(
-										"loginData"
-									);
+									auth.logout();
 									window.location.replace("/");
 								}}
 							>
@@ -167,43 +163,6 @@ const Profilepage = () => {
 							</button>
 						</div>
 					</div>
-
-					{/* <div className="lg:w-full lg:max-w-md px-8 py-4 mt-16 mb-16 bg-white rounded-lg shadow-lg md:justify-center">
-            <div className="flex justify-center m-1 mb-4 md:justify-start">
-              <img
-                className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full"
-                src={input.Profile_Photo}
-                alt="user"
-              />
-              <h2 className="ml-4 mt-4 text-2xl p-1 text-center align-middle font-Manrope font-semibold text-gray-800 md:text-3xl lg:text-end truncate">
-                {input.Name}
-              </h2>
-            </div>
-
-            <hr className="Phr" />
-            <h2 className="mt-2 text-2xl text-center font-Manrope font-semibold text-gray-800 md:mt-0 md:text-3xl">
-              About
-            </h2>
-            <p className=" mt-2 font-Nunito text-gray-600 ">{input.email_id}</p>
-            <p className=" profile-contact mt-2 font-Nunito text-gray-600">
-              +91{input.Phone}
-            </p>
-            <p className=" mt-2 font-Nunito  text-gray-600">{input.College}</p>
-
-            <div className="flex justify-end mt-4">
-              <div className="sign-out-btn  flex justify-center">
-                <button
-                  className="link_404"
-                  onClick={() => {
-                    localStorage.removeItem("loginData");
-                    window.location.replace("/");
-                  }}
-                >
-                  Sign Out
-                </button>
-              </div>
-            </div>
-          </div> */}
 
 					<div className="dynamic-content w-[100%] sm:m-2 min-h-[60vh] bg-sky-50 rounded-2xl  lg:w-8/12">
 						<div className="profilenav flex">

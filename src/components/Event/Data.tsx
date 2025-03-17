@@ -67,7 +67,6 @@ export const Data = [
   },
   {
     title: "Recognizance",
-    //info: 'easgffkghkufdtrdt strsdyftrstdhj',
     information: `Recognizance is the annual machine learning event of Prastuti, with several workshops and a
       series of talks. We cover a broad spectrum of diverse research areas concerned with building
       reliable and autonomous systems in the electrical and electronic industry. Recognizance is structured to derive the most from the given time and maintain enthusiasm
